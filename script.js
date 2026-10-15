@@ -37,10 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const typewriterElement = document.getElementById('typewriter-text');
   const roles = [
+    'Computer Science and Engineering Student',
     'Full-Stack Web Developer',
     'B.Tech CSE Student @ RCEE',
     'Problem Solver & Builder',
-    'Python & NLP Enthusiast',
+    'Python & NLP Developer',
     'Technical Leader & Collaborator'
   ];
 
@@ -357,20 +358,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'Production-ready UI with modern dashboard layout, collapsible sidebar, and responsive tables.'
       ],
       techStack: ['JavaScript ES6+', 'ERP Architecture', 'Constraint Solving', 'CSS Grid', 'SVG Graphics']
-    },
-    celebration: {
-      tag: 'Creative Interactive Physics Engine',
-      title: 'The Celebration Engine — HTML5 Canvas Experience',
-      overview:
-        'A high-performance visual experiment engineered to showcase native web graphics capabilities without external heavyweight gaming libraries. It simulates rotational lasers, particle rockets, and fireworks with 60fps hardware acceleration.',
-      features: [
-        'Vector math calculations for multi-angled rotational laser beams.',
-        'Kinematic particle explosions with gravitational deceleration and decay fading.',
-        'Custom render loop managed via window.requestAnimationFrame for smooth 60fps execution.',
-        'Dynamic color palette generation utilizing responsive HSL color spectrums.',
-        'Optimized memory usage with in-place particle array recycling to avoid memory leaks.'
-      ],
-      techStack: ['HTML5 Canvas 2D', 'Vector Physics', 'JavaScript ES6', 'Kinematic Motion', 'Hardware Acceleration']
     }
   };
 

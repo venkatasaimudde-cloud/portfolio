@@ -1,6 +1,6 @@
 # M. Venkata Sai — Professional Developer Portfolio
 
-A modern, high-contrast, responsive personal portfolio website engineered for **M. Venkata Sai** (B.Tech Computer Science & Engineering student at Ramachandra College of Engineering, Web Developer & Technical Leader).
+A modern, high-contrast, responsive personal portfolio website engineered for **M. Venkata Sai** (Computer Science and Engineering Student at Ramachandra College of Engineering, Web Developer & Technical Leader).
 
 ![Portfolio Preview Banner](https://img.shields.io/badge/Status-Live%20%26%20Active-success?style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -12,16 +12,17 @@ A modern, high-contrast, responsive personal portfolio website engineered for **
 ## 🌟 Key Highlights
 
 - **Dual Color Modes**: Seamless toggle between deep glassmorphic **Dark Mode** and high-contrast **Light Mode**, with automatic system preference detection and `localStorage` state persistence.
-- **Dynamic Typing Animation**: Interactive hero typewriter cycling through professional identities and competencies.
-- **Interactive Ambient Particle Background**: Subtle, lightweight HTML5 Canvas constellation mesh that reacts gently to mouse motion with automatic FPS management and power-saving sleep when out of view.
-- **Comprehensive Project Showcase & Case Studies**:
-  - **Mandi Mitra**: Agri-Tech platform built with React 19, TypeScript, Express, and Vite.
-  - **Prakalp**: Python NLP Academic Text Simplifier powered by NLTK and WordNet.
-  - **EduFlow ERP**: College timetable generation engine with constraint solving.
-  - **The Celebration Engine**: Canvas 2D vector particle and laser simulation engine.
-- **Interactive Case Study Modals**: In-depth architecture breakdowns, key feature lists, and technology stacks for each project.
+- **Dynamic Typing Animation**: Interactive hero typewriter highlighting identities including *Computer Science and Engineering Student*, *Full-Stack Web Developer*, and *Problem Solver*.
+- **Interactive Ambient Particle Background**: Lightweight HTML5 Canvas constellation mesh that reacts gently to mouse motion with automatic FPS management and power-saving sleep when out of view.
+- **Completed Real-World Project Showcase**:
+  - **Mandi Mitra**: Agri-Tech marketplace platform built with React 19, TypeScript, Express, and Vite with PDF billing.
+  - **Prakalp**: Python NLP Academic Text Simplifier powered by NLTK, WordNet, and Flask.
+  - **EduFlow ERP**: College timetable and examination scheduling engine with multi-variable constraint solving.
+- **Interactive Case Study Modals**: In-depth architecture breakdowns, key feature lists, and technology stacks for each completed project.
+- **Certificates & Verified Milestones**: Verified academic credentials including Intermediate Merit (91%), Secondary School Certificate (72%), and B.Tech in Computer Science and Engineering enrollment.
 - **Categorized Skills Grid**: Frontend, Backend, Developer Tools, and Power/Leadership skills.
-- **Milestone Timeline**: Verified academic history (B.Tech at RCEE, 91% at NRI Junior College, 72% at ZPH School).
+- **Direct Calling & Messaging**: Instant one-click phone calling (`tel:7095431353`) and direct WhatsApp messaging (`https://wa.me/917095431353`).
+- **Official Social Media Profiles**: Direct links to GitHub (`https://github.com/venkatasaimudde-cloud`) and LinkedIn (`https://www.linkedin.com/in/venkata-sai-418494373/?isSelfProfile=true`).
 - **One-Click Clipboard Actions**: Instant email and phone copying with animated toast notifications.
 - **Validated Contact Form**: Real-time client-side form validation with accessible error messaging.
 - **Full Responsiveness & Accessibility**: Tested across desktop, tablet, and mobile breakpoints; honors `prefers-reduced-motion` settings.
@@ -31,7 +32,7 @@ A modern, high-contrast, responsive personal portfolio website engineered for **
 ## 📂 Project Structure
 
 ```
-├── index.html       # Semantic HTML5 markup, SEO meta tags, and structured data
+├── index.html       # Semantic HTML5 markup, SEO meta tags, and structured sections
 ├── styles.css       # Master CSS custom properties, glassmorphism, responsive grids
 ├── script.js        # Theme toggle, typewriter, particle canvas, modal, copy toasts
 └── README.md        # Documentation and project overview
@@ -41,7 +42,7 @@ A modern, high-contrast, responsive personal portfolio website engineered for **
 
 ## 🚀 Quick Start / Local Setup
 
-No external dependencies, build tools, or npm installations required to preview:
+No external dependencies, build tools, or npm installations required to run:
 
 1. **Clone the repository:**
    ```bash
@@ -62,13 +63,34 @@ No external dependencies, build tools, or npm installations required to preview:
 
 ---
 
-## 📬 Contact & Connect
+## 🌐 Deployment Instructions
 
-- **Name**: M. Venkata Sai
-- **Email**: [venkatasaimudde@gmail.com](mailto:venkatasaimudde@gmail.com)
-- **Phone**: [+91 9908970502](tel:+919908970502)
-- **Institution**: Ramachandra College of Engineering (RCEE), Andhra Pradesh, India
+### GitHub Pages (Recommended)
+1. Push this repository to GitHub: `https://github.com/venkatasaimudde-cloud/portfolio`
+2. Go to **Settings** > **Pages**.
+3. Under **Build and deployment**, select **Source** as `Deploy from a branch`.
+4. Choose the `main` branch and `/ (root)` folder, then click **Save**.
+5. Your portfolio will be live at `https://venkatasaimudde-cloud.github.io/portfolio/`.
+
+### Vercel / Netlify
+1. Connect your GitHub repository to Vercel or Netlify.
+2. Select root directory `./` (no build command or output directory needed as this is vanilla HTML/CSS/JS).
+3. Click **Deploy**.
 
 ---
 
-&copy; 2026 M. Venkata Sai. All rights reserved.
+## 📬 Contact & Connect
+
+- **Name**: M. Venkata Sai
+- **Academic Branch**: Computer Science and Engineering
+- **Institution**: Ramachandra College of Engineering (RCEE), Andhra Pradesh, India
+- **Phone**: [7095431353](tel:7095431353) (Call directly: `tel:7095431353`)
+- **WhatsApp**: [Chat on WhatsApp](https://wa.me/917095431353) (`https://wa.me/917095431353`)
+- **Email**: [venkatasaimudde@gmail.com](mailto:venkatasaimudde@gmail.com)
+- **GitHub**: [Visit GitHub Profile](https://github.com/venkatasaimudde-cloud)
+- **LinkedIn**: [Connect on LinkedIn](https://www.linkedin.com/in/venkata-sai-418494373/?isSelfProfile=true)
+- **HackerRank**: Unconfigured (Pending profile confirmation)
+
+---
+
+&copy; 2026 M. Venkata Sai. All original academic and professional rights preserved.
