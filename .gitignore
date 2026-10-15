@@ -1,0 +1,11 @@
+# OS Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Reference & Archival Backups
+original_index.html
+documents_portfolio.html
+*.log

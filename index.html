@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M. Venkata Sai | Full-Stack Web Developer & Engineer</title>
+  <meta name="description"
+    content="Personal portfolio of M. Venkata Sai — B.Tech Computer Science Engineer, Full-Stack Web Developer, and Technical Leader specialized in building high-impact web applications, NLP tools, and responsive digital platforms.">
+  <meta name="author" content="M. Venkata Sai">
+  <meta name="keywords" content="M Venkata Sai, Venkata Sai Mudde, Portfolio, Full-Stack Developer, Ramachandra College of Engineering, Web Developer, React, Python, JavaScript, UI/UX">
+
+  <!-- Open Graph / Meta Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="M. Venkata Sai | Full-Stack Web Developer & Engineer">
+  <meta property="og:description"
+    content="Portfolio of M. Venkata Sai featuring production-grade web applications, academic NLP tools, and full-stack projects.">
+  <meta property="og:image" content="assets/avatar.svg">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50%' y='62%' font-size='52' font-weight='800' fill='white' text-anchor='middle' font-family='sans-serif'>VS</text></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Ambient Particle Canvas for Hero & Background -->
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="header">
+    <nav class="nav-container" aria-label="Main Navigation">
+      <a href="#hero" class="brand-logo" aria-label="Venkata Sai Portfolio Home">
+        <div class="logo-mark">
+          <span class="logo-letters">VS</span>
+          <span class="logo-glow" aria-hidden="true"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">M. Venkata Sai</span>
+          <span class="brand-tag">Engineer & Developer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Nav Actions (Theme Toggle & CTA) -->
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Switch theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta">Let's Talk</a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu"
+          aria-expanded="false" aria-controls="nav-links">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Available for Internships & Projects</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">M. Venkata Sai</span>
+          </h1>
+
+          <div class="typewriter-wrapper">
+            <span class="typewriter-prefix">I am a</span>
+            <span id="typewriter-text" class="typewriter-text"></span>
+            <span class="typewriter-cursor">|</span>
+          </div>
+
+          <p class="hero-subtitle">
+            B.Tech student at <strong>Ramachandra College of Engineering (RCEE)</strong> with an active passion for
+            building high-performance full-stack web applications, intuitive digital products, and intelligent software
+            solutions.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span>Explore My Work</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <span>Contact Me</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Quick Stat Highlights -->
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <span class="highlight-number">4+</span>
+              <span class="highlight-label">Real-world Projects</span>
+            </div>
+            <div class="highlight-divider"></div>
+            <div class="highlight-item">
+              <span class="highlight-number">91%</span>
+              <span class="highlight-label">Intermediate Academic Merit</span>
+            </div>
+            <div class="highlight-divider"></div>
+            <div class="highlight-item">
+              <span class="highlight-number">B.Tech</span>
+              <span class="highlight-label">RCEE Engineering</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Profile Card -->
+        <div class="hero-visual">
+          <div class="profile-card-wrapper">
+            <div class="profile-card-glow" aria-hidden="true"></div>
+            <div class="profile-card">
+              <div class="profile-image-container">
+                <!-- High-fidelity Developer Avatar Illustration -->
+                <div class="avatar-box">
+                  <svg class="avatar-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    role="img" aria-label="Venkata Sai Developer Profile Visual">
+                    <defs>
+                      <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#312e81" />
+                        <stop offset="50%" stop-color="#1e1b4b" />
+                        <stop offset="100%" stop-color="#0f172a" />
+                      </linearGradient>
+                      <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f5d0b5" />
+                        <stop offset="100%" stop-color="#e2af8e" />
+                      </linearGradient>
+                      <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="100%" stop-color="#06b6d4" />
+                      </linearGradient>
+                    </defs>
+                    <!-- Background Circle -->
+                    <circle cx="140" cy="140" r="130" fill="url(#bgGrad)" stroke="url(#accentGrad)" stroke-width="3" />
+                    <!-- Ambient Code Lines Background -->
+                    <rect x="50" y="55" width="50" height="4" rx="2" fill="#6366f1" opacity="0.4" />
+                    <rect x="50" y="66" width="35" height="4" rx="2" fill="#06b6d4" opacity="0.3" />
+                    <rect x="195" y="55" width="45" height="4" rx="2" fill="#a855f7" opacity="0.4" />
+                    <rect x="205" y="66" width="35" height="4" rx="2" fill="#6366f1" opacity="0.3" />
+                    <!-- Stylized Developer Silhouette -->
+                    <!-- Body / Blazer -->
+                    <path d="M70 260 C70 210 100 185 140 185 C180 185 210 210 210 260 Z" fill="#1e293b" />
+                    <path d="M110 260 L140 210 L170 260 Z" fill="#0f172a" />
+                    <!-- Inner Shirt & Collar -->
+                    <polygon points="125,185 155,185 140,225" fill="#f8fafc" />
+                    <polygon points="135,185 145,185 140,215" fill="#6366f1" />
+                    <!-- Neck -->
+                    <rect x="126" y="150" width="28" height="38" rx="6" fill="url(#skinGrad)" />
+                    <!-- Head & Ears -->
+                    <circle cx="106" cy="135" r="9" fill="url(#skinGrad)" />
+                    <circle cx="174" cy="135" r="9" fill="url(#skinGrad)" />
+                    <path d="M108 120 C108 85 172 85 172 120 C172 155 158 170 140 170 C122 170 108 155 108 120 Z"
+                      fill="url(#skinGrad)" />
+                    <!-- Hair -->
+                    <path
+                      d="M104 115 C102 80 120 62 140 62 C165 62 176 80 176 115 C168 95 150 90 140 90 C130 90 115 95 104 115 Z"
+                      fill="#0f172a" />
+                    <!-- Modern Eyeglasses -->
+                    <rect x="116" y="118" width="20" height="14" rx="4" fill="none" stroke="#6366f1" stroke-width="2.5" />
+                    <rect x="144" y="118" width="20" height="14" rx="4" fill="none" stroke="#6366f1" stroke-width="2.5" />
+                    <line x1="136" y1="124" x2="144" y2="124" stroke="#6366f1" stroke-width="2.5" />
+                    <!-- Friendly Smile -->
+                    <path d="M132 150 Q140 156 148 150" fill="none" stroke="#831843" stroke-width="2.2"
+                      stroke-linecap="round" />
+                    <!-- Laptop in Foreground -->
+                    <rect x="85" y="240" width="110" height="30" rx="6" fill="#334155" stroke="#475569" stroke-width="2" />
+                    <polygon points="120,248 160,248 155,258 125,258" fill="#6366f1" opacity="0.8" />
+                  </svg>
+                </div>
+                <div class="profile-badge-floating">
+                  <span class="badge-icon">⚡</span>
+                  <div class="badge-content">
+                    <span class="badge-title">Tech Leader</span>
+                    <span class="badge-sub">Full-Stack & NLP</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile Details Footer Inside Card -->
+              <div class="profile-card-details">
+                <div class="profile-card-header">
+                  <h3 class="profile-name">M. Venkata Sai</h3>
+                  <span class="profile-role">Computer Science & Engineering</span>
+                </div>
+                <div class="profile-meta-tags">
+                  <span class="meta-tag">RCEE Student</span>
+                  <span class="meta-tag">Web Dev</span>
+                  <span class="meta-tag">Python & JS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+        <span class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </span>
+        <span class="scroll-text">Scroll to explore</span>
+      </a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">About Me</div>
+          <h2 class="section-title">Driven by Curiosity, Grounded in Engineering</h2>
+          <p class="section-subtitle">A snapshot of who I am, my philosophy, and what I bring to teams.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card story-card glass-panel">
+            <div class="card-icon-bubble">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <h3 class="card-heading">Professional Profile</h3>
+            <p class="card-text">
+              I am an aspiring software engineer currently pursuing my Bachelor of Technology (B.Tech) in Computer
+              Science and Engineering at <strong>Ramachandra College of Engineering (RCEE)</strong>.
+            </p>
+            <p class="card-text">
+              My core strengths lie in bridging modern full-stack web technologies with user-centric interface design and
+              intelligent algorithmic logic. Whether architecting an interactive Agri-Tech platform like
+              <strong>Mandi Mitra</strong> or developing NLP language tools like <strong>Prakalp</strong>, I focus on
+              clean structure, dependable performance, and measurable real-world utility.
+            </p>
+            <div class="key-traits">
+              <span class="trait-pill">💡 Fast Learner</span>
+              <span class="trait-pill">🤝 Team Collaborator</span>
+              <span class="trait-pill">🎯 Goal-Oriented</span>
+              <span class="trait-pill">🛠️ Hands-on Builder</span>
+            </div>
+          </div>
+
+          <div class="about-pillars">
+            <div class="pillar-card glass-panel">
+              <div class="pillar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+              <div class="pillar-content">
+                <h4>Full-Stack Web Development</h4>
+                <p>Creating responsive, modern web applications using HTML5, CSS3, JavaScript, React, and RESTful
+                  APIs with attention to accessibility and clean design.</p>
+              </div>
+            </div>
+
+            <div class="pillar-card glass-panel">
+              <div class="pillar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </div>
+              <div class="pillar-content">
+                <h4>Problem Solving & Algorithms</h4>
+                <p>Translating academic knowledge into working code, from computational scheduling algorithms to Natural
+                  Language Processing (NLP) tools.</p>
+              </div>
+            </div>
+
+            <div class="pillar-card glass-panel">
+              <div class="pillar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div class="pillar-content">
+                <h4>Leadership & Collaboration</h4>
+                <p>Demonstrated ability to communicate ideas clearly, manage project workflows, and coordinate effectively
+                  within technical teams and student hackathons.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Competencies</div>
+          <h2 class="section-title">Technical Expertise & Power Skills</h2>
+          <p class="section-subtitle">Categorized skills backed by hands-on project implementations and academic coursework.</p>
+        </div>
+
+        <div class="skills-categories-grid">
+          <!-- Web & Frontend Development -->
+          <div class="skill-category-card glass-panel">
+            <div class="category-header">
+              <div class="category-icon frontend-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                  <polyline points="2 17 12 22 22 17" />
+                  <polyline points="2 12 12 17 22 12" />
+                </svg>
+              </div>
+              <div class="category-title-group">
+                <h3>Frontend Development</h3>
+                <span class="category-count">Modern Web & UI</span>
+              </div>
+            </div>
+            <div class="skills-tag-list">
+              <div class="skill-pill">
+                <span class="skill-name">HTML5</span>
+                <span class="skill-level">Semantic</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">CSS3 & Flex/Grid</span>
+                <span class="skill-level">Advanced</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">JavaScript (ES6+)</span>
+                <span class="skill-level">Proficient</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">React.js</span>
+                <span class="skill-level">Modern</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Tailwind CSS</span>
+                <span class="skill-level">Utility-first</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Responsive Design</span>
+                <span class="skill-level">Mobile-first</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">HTML5 Canvas</span>
+                <span class="skill-level">Interactive</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend & Programming -->
+          <div class="skill-category-card glass-panel">
+            <div class="category-header">
+              <div class="category-icon backend-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+                  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+                  <line x1="6" x2="6.01" y1="6" y2="6" />
+                  <line x1="6" x2="6.01" y1="18" y2="18" />
+                </svg>
+              </div>
+              <div class="category-title-group">
+                <h3>Backend & Programming</h3>
+                <span class="category-count">Languages & APIs</span>
+              </div>
+            </div>
+            <div class="skills-tag-list">
+              <div class="skill-pill">
+                <span class="skill-name">Python</span>
+                <span class="skill-level">Core & NLP</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Node.js / Express</span>
+                <span class="skill-level">RESTful</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Flask / Python Web</span>
+                <span class="skill-level">Applied</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">NLTK & WordNet</span>
+                <span class="skill-level">Text Processing</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">SQLite & Relational DB</span>
+                <span class="skill-level">Practical</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">REST APIs</span>
+                <span class="skill-level">Integration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Practices -->
+          <div class="skill-category-card glass-panel">
+            <div class="category-header">
+              <div class="category-icon tools-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+              </div>
+              <div class="category-title-group">
+                <h3>Developer Tools</h3>
+                <span class="category-count">Workflow & Build</span>
+              </div>
+            </div>
+            <div class="skills-tag-list">
+              <div class="skill-pill">
+                <span class="skill-name">Git & GitHub</span>
+                <span class="skill-level">Version Control</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Vite</span>
+                <span class="skill-level">Bundler</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">VS Code / Antigravity</span>
+                <span class="skill-level">IDE</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Chrome DevTools</span>
+                <span class="skill-level">Debugging</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Terminal / CLI</span>
+                <span class="skill-level">PowerShell/Bash</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft & Leadership Skills (Original Power Skills) -->
+          <div class="skill-category-card glass-panel">
+            <div class="category-header">
+              <div class="category-icon soft-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+              <div class="category-title-group">
+                <h3>Power & Leadership Skills</h3>
+                <span class="category-count">Professional Growth</span>
+              </div>
+            </div>
+            <div class="skills-tag-list">
+              <div class="skill-pill highlight-pill">
+                <span class="skill-name">Leadership</span>
+                <span class="skill-level">Demonstrated</span>
+              </div>
+              <div class="skill-pill highlight-pill">
+                <span class="skill-name">Communication</span>
+                <span class="skill-level">Articulate</span>
+              </div>
+              <div class="skill-pill highlight-pill">
+                <span class="skill-name">Project Management</span>
+                <span class="skill-level">Organized</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Problem Solving</span>
+                <span class="skill-level">Analytical</span>
+              </div>
+              <div class="skill-pill">
+                <span class="skill-name">Team Coordination</span>
+                <span class="skill-level">Collaborative</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Featured Work</div>
+          <h2 class="section-title">Projects & Technical Innovations</h2>
+          <p class="section-subtitle">Real implementations exploring web applications, natural language processing, and interactive physics.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="projects-filter-bar" role="tablist" aria-label="Project category filters">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Projects (4)</button>
+          <button class="filter-btn" data-filter="fullstack" role="tab" aria-selected="false">Full-Stack</button>
+          <button class="filter-btn" data-filter="nlp" role="tab" aria-selected="false">Python & NLP</button>
+          <button class="filter-btn" data-filter="creative" role="tab" aria-selected="false">Interactive & UI</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+          <!-- PROJECT 1: Mandi Mitra -->
+          <article class="project-card glass-panel" data-category="fullstack">
+            <div class="project-preview-box">
+              <div class="project-banner mandimitra-banner">
+                <div class="banner-badge">Agri-Tech Platform</div>
+                <div class="banner-illustration">
+                  <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="banner-svg">
+                    <rect x="20" y="20" width="160" height="80" rx="8" fill="#132a13" stroke="#52b788" stroke-width="2" />
+                    <line x1="35" y1="40" x2="90" y2="40" stroke="#74c69d" stroke-width="3" stroke-linecap="round" />
+                    <line x1="35" y1="52" x2="70" y2="52" stroke="#95d5b2" stroke-width="2" stroke-linecap="round" />
+                    <rect x="115" y="35" width="50" height="50" rx="6" fill="#1b4332" />
+                    <circle cx="140" cy="55" r="14" fill="#40916c" />
+                    <path d="M135 55 L139 59 L147 50" stroke="#d8f3dc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <line x1="35" y1="75" x2="85" y2="75" stroke="#b7e4c7" stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-type-tag">Full-Stack Application</span>
+                <span class="project-status">Featured</span>
+              </div>
+              <h3 class="project-title">Mandi Mitra</h3>
+              <p class="project-desc">
+                A digital agricultural marketplace connecting farmers and wholesale vendors. Features real-time mandi
+                price discovery, authenticated sessions, automated PDF billing with jsPDF, and a high-performance UI
+                built with React 19 and Vite.
+              </p>
+              <div class="project-tech-stack">
+                <span class="tech-pill">React 19</span>
+                <span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Express.js</span>
+                <span class="tech-pill">Vite</span>
+                <span class="tech-pill">Tailwind CSS</span>
+                <span class="tech-pill">jsPDF</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm modal-trigger" data-modal="mandimitra">
+                  <span>View Case Study</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: Prakalp - Academic Text Simplifier -->
+          <article class="project-card glass-panel" data-category="nlp">
+            <div class="project-preview-box">
+              <div class="project-banner prakalp-banner">
+                <div class="banner-badge">NLP & Flask</div>
+                <div class="banner-illustration">
+                  <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="banner-svg">
+                    <rect x="20" y="20" width="160" height="80" rx="8" fill="#1e1b4b" stroke="#818cf8" stroke-width="2" />
+                    <rect x="35" y="35" width="55" height="50" rx="4" fill="#312e81" stroke="#6366f1" stroke-width="1.5" />
+                    <line x1="42" y1="46" x2="78" y2="46" stroke="#c7d2fe" stroke-width="2" />
+                    <line x1="42" y1="54" x2="68" y2="54" stroke="#a5b4fc" stroke-width="1.5" />
+                    <path d="M96 60 L108 60 M104 56 L108 60 L104 64" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <rect x="115" y="35" width="55" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+                    <line x1="122" y1="46" x2="158" y2="46" stroke="#e0f2fe" stroke-width="2" />
+                    <line x1="122" y1="54" x2="148" y2="54" stroke="#7dd3fc" stroke-width="1.5" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-type-tag">Python & NLP Tool</span>
+                <span class="project-status">Academic</span>
+              </div>
+              <h3 class="project-title">Prakalp: Academic Text Simplifier</h3>
+              <p class="project-desc">
+                An intelligent NLP system designed to convert dense, polysyllabic academic texts into clear, readable
+                language. Integrates NLTK tokenization, WordNet synonym substitution, Flesch Reading Ease calculations,
+                and passive voice detection.
+              </p>
+              <div class="project-tech-stack">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">NLTK</span>
+                <span class="tech-pill">WordNet</span>
+                <span class="tech-pill">Flask</span>
+                <span class="tech-pill">Readability Metrics</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm modal-trigger" data-modal="prakalp">
+                  <span>View Case Study</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: EduFlow ERP & Autonomous Scheduler -->
+          <article class="project-card glass-panel" data-category="fullstack">
+            <div class="project-preview-box">
+              <div class="project-banner eduflow-banner">
+                <div class="banner-badge">ERP & AI Solver</div>
+                <div class="banner-illustration">
+                  <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="banner-svg">
+                    <rect x="20" y="20" width="160" height="80" rx="8" fill="#0f172a" stroke="#06b6d4" stroke-width="2" />
+                    <line x1="20" y1="42" x2="180" y2="42" stroke="#1e293b" stroke-width="2" />
+                    <circle cx="34" cy="31" r="4" fill="#ef4444" />
+                    <circle cx="46" cy="31" r="4" fill="#f59e0b" />
+                    <circle cx="58" cy="31" r="4" fill="#10b981" />
+                    <!-- Grid Cells -->
+                    <rect x="32" y="50" width="30" height="20" rx="3" fill="#1e293b" />
+                    <rect x="68" y="50" width="30" height="20" rx="3" fill="#0284c7" />
+                    <rect x="104" y="50" width="30" height="20" rx="3" fill="#1e293b" />
+                    <rect x="140" y="50" width="30" height="20" rx="3" fill="#0e7490" />
+                    <rect x="32" y="74" width="30" height="18" rx="3" fill="#0369a1" />
+                    <rect x="68" y="74" width="30" height="18" rx="3" fill="#1e293b" />
+                    <rect x="104" y="74" width="30" height="18" rx="3" fill="#0e7490" />
+                    <rect x="140" y="74" width="30" height="18" rx="3" fill="#1e293b" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-type-tag">College ERP & Scheduler</span>
+                <span class="project-status">Hackathon Project</span>
+              </div>
+              <h3 class="project-title">EduFlow ERP & Timetable Engine</h3>
+              <p class="project-desc">
+                An enterprise-grade college ERP featuring an automated timetable and exam scheduling engine. Resolves
+                multi-variable constraints across faculty workloads, room availability, student cohorts, and exam
+                allocations with conflict detection.
+              </p>
+              <div class="project-tech-stack">
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">Modular UI</span>
+                <span class="tech-pill">Constraint Solving</span>
+                <span class="tech-pill">ERP Architecture</span>
+                <span class="tech-pill">Conflict Inspector</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm modal-trigger" data-modal="eduflow">
+                  <span>View Case Study</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 4: Interactive Celebration Engine -->
+          <article class="project-card glass-panel" data-category="creative">
+            <div class="project-preview-box">
+              <div class="project-banner celebration-banner">
+                <div class="banner-badge">HTML5 Canvas Engine</div>
+                <div class="banner-illustration">
+                  <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="banner-svg">
+                    <rect x="20" y="20" width="160" height="80" rx="8" fill="#180026" stroke="#e879f9" stroke-width="2" />
+                    <!-- Laser Beams -->
+                    <line x1="100" y1="100" x2="35" y2="30" stroke="#00ffff" stroke-width="2" opacity="0.8" />
+                    <line x1="100" y1="100" x2="165" y2="30" stroke="#ff00ff" stroke-width="2" opacity="0.8" />
+                    <!-- Firework Bursts -->
+                    <circle cx="65" cy="45" r="3" fill="#f43f5e" />
+                    <circle cx="55" cy="35" r="2" fill="#fbbf24" />
+                    <circle cx="75" cy="38" r="2" fill="#38bdf8" />
+                    <circle cx="135" cy="50" r="3" fill="#a855f7" />
+                    <circle cx="145" cy="40" r="2" fill="#34d399" />
+                    <circle cx="125" cy="42" r="2" fill="#f472b6" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-type-tag">Creative Interactive Physics</span>
+                <span class="project-status">Interactive</span>
+              </div>
+              <h3 class="project-title">Interactive Celebration Engine</h3>
+              <p class="project-desc">
+                An interactive physics animation engine built purely in native HTML5 Canvas and JavaScript. Computes
+                vector physics for rotational dynamic DJ lasers, rocket trajectories, and particle firework bursts with
+                60fps hardware acceleration.
+              </p>
+              <div class="project-tech-stack">
+                <span class="tech-pill">HTML5 Canvas</span>
+                <span class="tech-pill">Vector Physics</span>
+                <span class="tech-pill">JavaScript ES6</span>
+                <span class="tech-pill">Animation Loops</span>
+                <span class="tech-pill">RequestAnimationFrame</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-primary btn-sm modal-trigger" data-modal="celebration">
+                  <span>View Case Study</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section education-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Academic Background</div>
+          <h2 class="section-title">Education & Milestones</h2>
+          <p class="section-subtitle">Consistent academic foundation leading towards engineering and technical problem solving.</p>
+        </div>
+
+        <div class="education-timeline">
+          <!-- Item 1: B.Tech -->
+          <div class="timeline-item glass-panel current-phase">
+            <div class="timeline-indicator">
+              <div class="timeline-dot current-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge-group">
+                <span class="phase-badge current">Pursuing</span>
+                <span class="timeline-date">Present</span>
+              </div>
+              <h3 class="institution-title">Ramachandra College of Engineering (RCEE)</h3>
+              <div class="degree-title">Bachelor of Technology (B.Tech) — Computer Science & Engineering</div>
+              <p class="timeline-desc">
+                Developing strong fundamentals in Data Structures, Database Management, Web Development, Object-Oriented
+                Programming, and Operating Systems. Actively involved in campus hackathons, web projects, and team
+                leadership initiatives.
+              </p>
+              <div class="timeline-tags">
+                <span class="edu-tag">Core CS</span>
+                <span class="edu-tag">Full-Stack Development</span>
+                <span class="edu-tag">Technical Leadership</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Intermediate -->
+          <div class="timeline-item glass-panel">
+            <div class="timeline-indicator">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge-group">
+                <span class="phase-badge score">Score: 91%</span>
+                <span class="timeline-date">Intermediate</span>
+              </div>
+              <h3 class="institution-title">NRI Junior College</h3>
+              <div class="degree-title">Intermediate (MPC — Mathematics, Physics, Chemistry)</div>
+              <p class="timeline-desc">
+                Achieved an outstanding score of <strong>91%</strong>, building strong analytical thinking, quantitative
+                problem solving, and mathematical modeling foundations.
+              </p>
+              <div class="timeline-tags">
+                <span class="edu-tag">Mathematics</span>
+                <span class="edu-tag">Analytical Thinking</span>
+                <span class="edu-tag">Academic Merit</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: SSC -->
+          <div class="timeline-item glass-panel">
+            <div class="timeline-indicator">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-badge-group">
+                <span class="phase-badge score">Score: 72%</span>
+                <span class="timeline-date">2023 Completion</span>
+              </div>
+              <h3 class="institution-title">ZPH School</h3>
+              <div class="degree-title">Secondary School Certificate (SSC / 10th Standard)</div>
+              <p class="timeline-desc">
+                Completed secondary education with <strong>72%</strong> in 2023, participating in academic and school
+                co-curricular activities.
+              </p>
+              <div class="timeline-tags">
+                <span class="edu-tag">School Foundations</span>
+                <span class="edu-tag">Co-curriculars</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Let's Connect</div>
+          <h2 class="section-title">Get in Touch</h2>
+          <p class="section-subtitle">Have an internship opportunity, project collaboration, or just want to discuss technology? Reach out anytime!</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Cards -->
+          <div class="contact-cards-column">
+            <!-- Email Card with Copy Button -->
+            <div class="contact-info-card glass-panel">
+              <div class="contact-card-icon email-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-label">Email Address</span>
+                <a href="mailto:venkatasaimudde@gmail.com" class="contact-value">venkatasaimudde@gmail.com</a>
+              </div>
+              <button class="copy-btn" data-copy="venkatasaimudde@gmail.com" title="Copy email address"
+                aria-label="Copy email address">
+                <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
+                <span class="copy-tooltip">Copy</span>
+              </button>
+            </div>
+
+            <!-- Phone Card with Copy Button -->
+            <div class="contact-info-card glass-panel">
+              <div class="contact-card-icon phone-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-label">Phone & WhatsApp</span>
+                <a href="tel:+919908970502" class="contact-value">+91 9908970502</a>
+              </div>
+              <button class="copy-btn" data-copy="+919908970502" title="Copy phone number"
+                aria-label="Copy phone number">
+                <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                </svg>
+                <span class="copy-tooltip">Copy</span>
+              </button>
+            </div>
+
+            <!-- Location Card -->
+            <div class="contact-info-card glass-panel">
+              <div class="contact-card-icon location-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Andhra Pradesh, India</span>
+              </div>
+            </div>
+
+            <!-- College Affiliation Card -->
+            <div class="contact-info-card glass-panel">
+              <div class="contact-card-icon college-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <div class="contact-card-details">
+                <span class="contact-label">Institution</span>
+                <span class="contact-value">Ramachandra College of Engineering (RCEE)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-container glass-panel">
+            <h3 class="form-title">Send a Direct Message</h3>
+            <p class="form-subtitle">Fill in your details and message. I typically respond within 24 hours.</p>
+
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name">Your Name <span class="required-star">*</span></label>
+                  <input type="text" id="contact-name" name="name" placeholder="John Doe" required>
+                  <span class="field-error" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Your Email <span class="required-star">*</span></label>
+                  <input type="email" id="contact-email" name="email" placeholder="john@example.com" required>
+                  <span class="field-error" id="email-error"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <input type="text" id="contact-subject" name="subject" placeholder="Project Inquiry / Internship Opportunity">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message <span class="required-star">*</span></label>
+                <textarea id="contact-message" name="message" rows="5"
+                  placeholder="Hello Venkata Sai, I would like to discuss..." required></textarea>
+                <span class="field-error" id="message-error"></span>
+              </div>
+
+              <button type="submit" id="submit-btn" class="btn btn-primary btn-block">
+                <span class="btn-text">Send Message</span>
+                <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" x2="11" y1="2" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+
+              <div id="form-feedback" class="form-feedback" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-mark">
+            <span class="logo-letters">VS</span>
+          </div>
+          <div>
+            <h3 class="footer-name">M. Venkata Sai</h3>
+            <p class="footer-desc">B.Tech Student & Full-Stack Web Developer passionate about engineering impactful digital experiences.</p>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; <span id="current-year">2026</span> M. Venkata Sai. All original academic and professional rights preserved.
+        </p>
+        <div class="footer-status">
+          <span class="pulse-indicator"></span>
+          <span>Engineered with HTML5, Vanilla CSS & Modern JS</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="back-to-top" class="back-to-top" title="Back to top" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- PROJECT CASE STUDY MODAL -->
+  <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+    hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog glass-panel">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+
+      <div class="modal-body" id="modal-content">
+        <!-- Content injected dynamically via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
