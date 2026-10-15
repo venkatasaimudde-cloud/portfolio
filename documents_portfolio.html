@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Sai | The Ultimate Celebration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #050005;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* 2-Second Premium Strobe Splash */
+        #splash {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .splash-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 10vw, 5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+            animation: strobe 0.2s infinite alternate;
+        }
+
+        @keyframes strobe {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.7; transform: scale(1.05); color: #00ffff; }
+        }
+
+        .fade-out { opacity: 0; visibility: hidden; transform: translateY(-100%); }
+
+        /* Premium Glass UI */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.2s ease-out;
+        }
+
+        .container.show { opacity: 1; transform: translateY(0); }
+
+        header { text-align: center; margin-bottom: 70px; }
+        header h1 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 3.5rem; 
+            color: #00ffff; 
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: 0.4s;
+        }
+
+        section:hover {
+            border-color: #ff00ff;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        h2 { color: #ff00ff; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { color: #00ffff; }
+
+        .tag {
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .tag:hover { background: #ff00ff; border-color: #ff00ff; box-shadow: 0 0 15px #ff00ff; }
+
+        .contact-link { color: #00ffff; text-decoration: none; font-weight: bold; }
+
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="splash-text">I am Venkata Sai</div>
+    </div>
+
+    <canvas id="partyCanvas"></canvas>
+
+    <div class="container" id="main-site">
+        <header>
+            <h1>Venkata Sai</h1>
+            <p style="letter-spacing: 5px; color: #ff00ff; font-weight: 600;">ENGINEER | DESIGNER | LEADER</p>
+        </header>
+
+        <section>
+            <h2>Status Summary</h2>
+            <p>B-Tech student at Ramachandra College of Engineering. Specialized in creating high-impact digital experiences with a focus on leadership and technical management.</p>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <table>
+                <tr><th>Phase</th><th>Institution</th><th>Score</th></tr>
+                <tr><td>B-Tech</td><td>RCEE</td><td>Present</td></tr>
+                <tr><td>Inter</td><td>NRI Junior College</td><td>91%</td></tr>
+                <tr><td>SSC</td><td>ZPH School (2023)</td><td>72%</td></tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Power Skills</h2>
+            <div class="tag">Communication</div>
+            <div class="tag">Leadership</div>
+            <div class="tag">Management</div>
+            <div class="tag">HTML / CSS / JS</div>
+        </section>
+
+        <section>
+            <h2>Live Project</h2>
+            <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
+                <h3 style="color: #00ffff;">The Celebration Engine</h3>
+                <p>A premium portfolio integrated with a complex particle engine simulating DJ lights and fireworks simultaneously.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Get In Touch</h2>
+            <p>Phone: <a class="contact-link" href="tel:9908970502">9908970502</a></p>
+            <p>Email: <a class="contact-link" href="mailto:venkatasaimudde@gmail.com">venkatasaimudde@gmail.com</a></p>
+        </section>
+    </div>
+
+    <script>
+        // Splash logic (2 Seconds)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('splash').classList.add('fade-out');
+                document.getElementById('main-site').classList.add('show');
+            }, 2000);
+        });
+
+        const canvas = document.getElementById('partyCanvas');
+        const ctx = canvas.getContext('2d');
+        let rockets = [], particles = [], lasers = [];
+        let w, h;
+
+        function init() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        // DJ Lasers
+        class Laser {
+            constructor() {
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = Math.random() * 0.02 + 0.01;
+                this.color = Math.random() > 0.5 ? '#00ffff' : '#ff00ff';
+            }
+            draw() {
+                this.angle += this.speed;
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = this.color;
+                ctx.moveTo(w / 2, h / 2);
+                ctx.lineTo(w / 2 + Math.cos(this.angle) * w, h / 2 + Math.sin(this.angle) * h);
+                ctx.stroke();
+            }
+        }
+
+        // Rockets
+        class Rocket {
+            constructor() {
+                this.x = Math.random() * w;
+                this.y = h;
+                this.tY = Math.random() * (h / 2);
+                this.v = Math.random() * 5 + 5;
+                this.c = `hsl(${Math.random() * 360}, 100%, 60%)`;
+            }
+            update() {
+                this.y -= this.v;
+                if (this.y <= this.tY) {
+                    for (let i = 0; i < 40; i++) particles.push(new Particle(this.x, this.y, this.c));
+                    return false;
+                }
+                return true;
+            }
+            draw() {
+                ctx.fillStyle = this.c;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, 7);
+                ctx.fill();
+            }
+        }
+
+        // Cracker Particles
+        class Particle {
+            constructor(x, y, c) {
+                this.x = x; this.y = y; this.c = c;
+                this.a = Math.random() * 6.28;
+                this.s = Math.random() * 4 + 1;
+                this.l = 1;
+            }
+            update() {
+                this.x += Math.cos(this.a) * this.s;
+                this.y += Math.sin(this.a) * this.s + 0.1;
+                this.l -= 0.02;
+            }
+            draw() {
+                ctx.globalAlpha = this.l;
+                ctx.fillStyle = this.c;
+                ctx.beginPath(); ctx.arc(this.x, this.y, 1.5, 0, 7); ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        for (let i = 0; i < 6; i++) lasers.push(new Laser());
+
+        function loop() {
+            ctx.fillStyle = 'rgba(5, 0, 5, 0.2)';
+            ctx.fillRect(0, 0, w, h);
+
+            lasers.forEach(l => l.draw());
+
+            if (Math.random() < 0.04) rockets.push(new Rocket());
+            rockets = rockets.filter(r => { r.draw(); return r.update(); });
+            particles = particles.filter(p => { p.draw(); p.update(); return p.l > 0; });
+
+            requestAnimationFrame(loop);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        loop();
+    </script>
+</body>
+</html>

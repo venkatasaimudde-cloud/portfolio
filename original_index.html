@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduFlow ERP & Autonomous Scheduling Platform</title>
+  <meta name="description" content="Production-grade College ERP and Autonomous Timetable & Exam Scheduling Engine">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="app" class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">EduFlow<span class="brand-badge">ERP</span></span>
+            <span class="brand-sub">Academic Platform</span>
+          </div>
+        </div>
+        <button id="sidebarCollapseBtn" class="icon-btn sidebar-toggle" title="Toggle Sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav custom-scrollbar">
+        <!-- Dashboard -->
+        <div class="nav-group">
+          <a class="nav-item active" data-view="dashboard" id="nav-dashboard">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="7" height="9" x="3" y="3" rx="1" />
+              <rect width="7" height="5" x="14" y="3" rx="1" />
+              <rect width="7" height="9" x="14" y="12" rx="1" />
+              <rect width="7" height="5" x="3" y="16" rx="1" />
+            </svg>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </div>
+
+        <!-- Academic Management -->
+        <div class="nav-section-title">ACADEMICS</div>
+        <div class="nav-group">
+          <a class="nav-item" data-view="departments" id="nav-departments">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+              <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+              <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+              <path d="M10 6h4" />
+              <path d="M10 10h4" />
+              <path d="M10 14h4" />
+              <path d="M10 18h4" />
+            </svg>
+            <span class="nav-label">Departments</span>
+          </a>
+          <a class="nav-item" data-view="academic-years" id="nav-years">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+              <line x1="16" x2="16" y1="2" y2="6" />
+              <line x1="8" x2="8" y1="2" y2="6" />
+              <line x1="3" x2="21" y1="10" y2="10" />
+            </svg>
+            <span class="nav-label">Academic Years</span>
+          </a>
+          <a class="nav-item" data-view="semesters" id="nav-semesters">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+              <path d="M6 6h10" />
+              <path d="M6 10h10" />
+            </svg>
+            <span class="nav-label">Semesters</span>
+          </a>
+          <a class="nav-item" data-view="classes" id="nav-classes">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span class="nav-label">Classes</span>
+          </a>
+          <a class="nav-item" data-view="sections" id="nav-sections">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="7" height="7" x="3" y="3" rx="1" />
+              <rect width="7" height="7" x="14" y="3" rx="1" />
+              <rect width="7" height="7" x="14" y="14" rx="1" />
+              <rect width="7" height="7" x="3" y="14" rx="1" />
+            </svg>
+            <span class="nav-label">Sections</span>
+          </a>
+          <a class="nav-item" data-view="subjects" id="nav-subjects">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+            <span class="nav-label">Subjects</span>
+          </a>
+        </div>
+
+        <!-- People -->
+        <div class="nav-section-title">PEOPLE</div>
+        <div class="nav-group">
+          <a class="nav-item" data-view="students" id="nav-students">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span class="nav-label">Students</span>
+          </a>
+          <a class="nav-item" data-view="staff" id="nav-staff">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span class="nav-label">Faculty & Staff</span>
+          </a>
+          <a class="nav-item" data-view="faculty-workload" id="nav-workload">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20v-6" />
+              <path d="M6 20V10" />
+              <path d="M18 20V4" />
+            </svg>
+            <span class="nav-label">Faculty Workload</span>
+          </a>
+        </div>
+
+        <!-- Infrastructure -->
+        <div class="nav-section-title">INFRASTRUCTURE</div>
+        <div class="nav-group">
+          <a class="nav-item" data-view="rooms" id="nav-rooms">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+              <path d="M3 9h18" />
+              <path d="M9 21V9" />
+            </svg>
+            <span class="nav-label">Classrooms & Labs</span>
+          </a>
+        </div>
+
+        <!-- Autonomous Timetable -->
+        <div class="nav-section-title">TIMETABLE PLATFORM</div>
+        <div class="nav-group">
+          <a class="nav-item" data-view="timetable-generator" id="nav-tt-gen">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <polyline points="3.29 7 12 12 20.71 7" />
+              <line x1="12" x2="12" y1="22" y2="12" />
+            </svg>
+            <span class="nav-label">Timetable Generator</span>
+            <span class="badge badge-accent ml-auto">AI Solver</span>
+          </a>
+          <a class="nav-item" data-view="class-timetable" id="nav-class-tt">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+              <path d="M3 9h18" />
+              <path d="M3 15h18" />
+              <path d="M9 3v18" />
+              <path d="M15 3v18" />
+            </svg>
+            <span class="nav-label">Class Timetable</span>
+          </a>
+          <a class="nav-item" data-view="staff-timetable" id="nav-staff-tt">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 2v4" />
+              <path d="M16 2v4" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M3 10h18" />
+              <path d="M8 14h.01" />
+              <path d="M12 14h.01" />
+              <path d="M16 14h.01" />
+              <path d="M8 18h.01" />
+              <path d="M12 18h.01" />
+              <path d="M16 18h.01" />
+            </svg>
+            <span class="nav-label">Staff Timetable</span>
+          </a>
+          <a class="nav-item" data-view="room-timetable" id="nav-room-tt">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 21h18" />
+              <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" />
+              <path d="M9 9h.01" />
+              <path d="M9 12h.01" />
+              <path d="M9 15h.01" />
+              <path d="M15 9h.01" />
+              <path d="M15 12h.01" />
+              <path d="M15 15h.01" />
+            </svg>
+            <span class="nav-label">Room Allocation</span>
+          </a>
+          <a class="nav-item" data-view="master-timetable" id="nav-master-tt">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+            <span class="nav-label">Master Timetable</span>
+          </a>
+          <a class="nav-item" data-view="timetable-conflicts" id="nav-conflicts">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+              <line x1="12" x2="12" y1="9" y2="13" />
+              <line x1="12" x2="12.01" y1="17" y2="17" />
+            </svg>
+            <span class="nav-label">Conflict Inspector</span>
+            <span id="sidebarConflictBadge" class="badge badge-danger ml-auto">0</span>
+          </a>
+        </div>
+
+        <!-- Examinations -->
+        <div class="nav-section-title">EXAMINATIONS</div>
+        <div class="nav-group">
+          <a class="nav-item" data-view="exam-setup" id="nav-exam-setup">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" x2="8" y1="13" y2="13" />
+              <line x1="16" x2="8" y1="17" y2="17" />
+            </svg>
+            <span class="nav-label">Exam Setup</span>
+          </a>
+          <a class="nav-item" data-view="exam-timetable" id="nav-exam-tt">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+              <line x1="16" x2="16" y1="2" y2="6" />
+              <line x1="8" x2="8" y1="2" y2="6" />
+              <line x1="3" x2="21" y1="10" y2="10" />
+              <path d="m9 16 2 2 4-4" />
+            </svg>
+            <span class="nav-label">Exam Schedule</span>
+          </a>
+          <a class="nav-item" data-view="seating-allocation" id="nav-seating">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 11v 8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1z" />
+              <path d="M21 11v 8a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1z" />
+              <path d="M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+              <path d="M17 21v-4a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v4" />
+            </svg>
+            <span class="nav-label">Seating Allocation</span>
+          </a>
+          <a class="nav-item" data-view="invigilator-allocation" id="nav-invigilation">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span class="nav-label">Invigilator Allocation</span>
+          </a>
+        </div>
+
+        <!-- Reports -->
+        <div class="nav-section-title">REPORTS & ANALYTICS</div>
+        <div class="nav-group">
+          <a class="nav-item" data-view="academic-reports" id="nav-reports">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" x2="8" y1="13" y2="13" />
+              <line x1="16" x2="8" y1="17" y2="17" />
+              <line x1="10" x2="8" y1="9" y2="9" />
+            </svg>
+            <span class="nav-label">Reports Workspace</span>
+          </a>
+        </div>
+
+        <!-- Administration -->
+        <div class="nav-section-title">SYSTEM</div>
+        <div class="nav-group">
+          <a class="nav-item" data-view="college-settings" id="nav-settings">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <span class="nav-label">Settings & Rules</span>
+          </a>
+          <a class="nav-item" data-view="users-roles" id="nav-users">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span class="nav-label">Users & Roles</span>
+          </a>
+          <a class="nav-item" data-view="audit-logs" id="nav-audit">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 8v4l3 3" />
+              <circle cx="12" cy="12" r="9" />
+            </svg>
+            <span class="nav-label">Audit Logs</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer User Card -->
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar" id="sidebarAvatar">A</div>
+          <div class="user-info">
+            <span class="user-name" id="sidebarUserName">Administrator</span>
+            <span class="user-role" id="sidebarUserRole">Super Admin</span>
+          </div>
+          <button id="quickLogoutBtn" class="icon-btn text-muted hover-danger" title="Logout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" x2="9" y1="12" y2="12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
+
+      <!-- TOPBAR HEADER -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="mobileMenuBtn" class="icon-btn mobile-only" title="Open Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+          </button>
+
+          <div class="breadcrumb" id="breadcrumbNav">
+            <span class="bc-item">EduFlow</span>
+            <span class="bc-sep">/</span>
+            <span class="bc-item active" id="currentBreadcrumb">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="global-search-container">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input type="text" id="globalSearchInput"
+              placeholder="Global search students, faculty, rooms, subjects... (Ctrl+K)" autocomplete="off">
+            <div id="globalSearchResults" class="search-dropdown hidden"></div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Role Switcher -->
+          <div class="role-selector-wrapper">
+            <label for="activeRoleSelect" class="sr-only">Active View Mode</label>
+            <select id="activeRoleSelect" class="form-select form-select-sm">
+              <option value="admin">👑 Administrator</option>
+              <option value="faculty">👨‍🏫 Faculty View</option>
+              <option value="student">🎓 Student View</option>
+            </select>
+          </div>
+
+          <!-- Dark / Light Theme Toggle -->
+          <button id="themeToggleBtn" class="icon-btn" title="Toggle Dark Mode">
+            <svg class="sun-icon hidden" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          </button>
+
+          <!-- Notifications Bell Dropdown -->
+          <div class="dropdown-wrapper">
+            <button id="notificationsBtn" class="icon-btn relative" title="Notifications">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+              </svg>
+              <span id="notificationBadge" class="notification-dot"></span>
+            </button>
+            <div id="notificationsDropdown" class="dropdown-menu notifications-menu hidden">
+              <div class="dropdown-header">
+                <span class="font-semibold">System Notifications</span>
+                <button id="clearNotificationsBtn" class="text-btn text-xs">Clear all</button>
+              </div>
+              <div id="notificationsList" class="notifications-list custom-scrollbar">
+                <!-- Notifications render dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo Dataset Controls -->
+          <button id="topbarDemoBtn" class="btn btn-sm btn-outline-accent" title="Populate production mock dataset">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+            <span>Load Demo Data</span>
+          </button>
+
+          <!-- User Menu Dropdown -->
+          <div class="dropdown-wrapper">
+            <button id="userProfileBtn" class="profile-pill-btn">
+              <span class="avatar-small" id="topbarAvatar">A</span>
+              <span class="user-display-name desktop-only" id="topbarUserName">Admin</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+            <div id="userMenuDropdown" class="dropdown-menu user-menu hidden">
+              <div class="user-menu-header">
+                <div class="font-semibold" id="menuUserFullName">Administrator</div>
+                <div class="text-xs text-muted" id="menuUserEmail">admin@eduflow.edu</div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" id="userMenuProfileLink"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                  height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg> Profile Settings</a>
+              <a class="dropdown-item" id="userMenuPasswordLink"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                  height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg> Change Password</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-danger" id="userMenuLogoutBtn"><svg xmlns="http://www.w3.org/2000/svg"
+                  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" x2="9" y1="12" y2="12" />
+                </svg> Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEW CONTAINER AREA -->
+      <main id="mainContent" class="main-content">
+        <!-- Views are dynamically rendered into here -->
+      </main>
+
+    </div>
+  </div>
+
+  <!-- REUSABLE MODAL CONTAINER -->
+  <div id="modalContainer" class="modal-overlay hidden">
+    <div class="modal-dialog" id="modalDialog">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">Modal Title</h3>
+        <button id="modalCloseBtn" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="modalBody" class="modal-body">
+        <!-- Dynamic Modal Body Content -->
+      </div>
+      <div id="modalFooter" class="modal-footer">
+        <!-- Dynamic Modal Action Buttons -->
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERATION SOLVER PROGRESS MODAL -->
+  <div id="solverProgressModal" class="modal-overlay hidden">
+    <div class="modal-dialog modal-md">
+      <div class="modal-header">
+        <h3 id="solverTitle" class="modal-title">Running Autonomous Constraint Solver</h3>
+      </div>
+      <div class="modal-body text-center py-6">
+        <div class="spinner-large mb-4"></div>
+        <div class="progress-bar-container mb-3">
+          <div id="solverProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div id="solverProgressPercent" class="font-bold text-lg color-accent mb-2">0%</div>
+        <div id="solverStepLabel" class="text-sm text-muted">Initializing engine and loading constraints...</div>
+
+        <div class="solver-logs-box custom-scrollbar mt-4 text-left font-mono text-xs">
+          <div id="solverLogEntries"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelSolverBtn" class="btn btn-secondary btn-sm">Cancel Generation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOBAL TOAST NOTIFICATIONS CONTAINER -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- SCRIPT INCLUSIONS -->
+  <script src="app.js"></script>
+</body>
+
+</html>
