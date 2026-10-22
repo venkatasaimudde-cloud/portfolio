@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const typewriterElement = document.getElementById('typewriter-text');
   const roles = [
-    'Computer Science and Engineering Student',
-    'Full-Stack Web Developer',
+    'Artificial Intelligence and Data Science Student',
+    'Web Developer',
     'B.Tech CSE Student @ RCEE',
     'Problem Solver & Builder',
     'Python & NLP Developer',
@@ -539,3 +539,5 @@ document.addEventListener('DOMContentLoaded', () => {
     currentYearSpan.textContent = new Date().getFullYear();
   }
 });
+
+

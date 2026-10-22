@@ -2453,3 +2453,29 @@ a.contact-value:hover {
     display: none !important;
   }
 }
+
+/* ===== LeetCode Brand Styles ===== */
+.leetcode-brand-icon {
+  background: linear-gradient(135deg, #ffa116, #ff6b00);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-leetcode-action {
+  border-color: #ffa116;
+  color: #ffa116;
+  transition: all 0.2s ease;
+}
+
+.btn-leetcode-action:hover {
+  background: #ffa116;
+  color: #fff;
+  border-color: #ffa116;
+  box-shadow: 0 0 14px rgba(255, 161, 22, 0.4);
+}
