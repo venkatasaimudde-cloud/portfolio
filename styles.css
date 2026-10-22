@@ -2479,3 +2479,77 @@ a.contact-value:hover {
   border-color: #ffa116;
   box-shadow: 0 0 14px rgba(255, 161, 22, 0.4);
 }
+
+/* ===== Side-by-Side Channels: GitHub, LinkedIn, Call, LeetCode, WhatsApp ===== */
+.hero-social-link.call-pill:hover {
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+}
+
+.hero-social-link.leetcode-pill:hover {
+  color: #ffa116;
+  border-color: rgba(255, 161, 22, 0.5);
+  box-shadow: 0 4px 14px rgba(255, 161, 22, 0.25);
+}
+
+.social-side-by-side {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.social-connect-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.05rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  transition: all var(--transition-fast);
+}
+
+.social-connect-pill:hover {
+  transform: translateY(-2px);
+  background: var(--bg-card-hover);
+}
+
+.social-connect-pill.github-pill:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+}
+
+.social-connect-pill.linkedin-pill:hover {
+  color: #0a66c2;
+  border-color: #0a66c2;
+  box-shadow: 0 4px 14px rgba(10, 102, 194, 0.3);
+}
+
+.social-connect-pill.call-pill:hover {
+  color: #3b82f6;
+  border-color: #3b82f6;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+
+.social-connect-pill.leetcode-pill:hover {
+  color: #ffa116;
+  border-color: #ffa116;
+  box-shadow: 0 4px 14px rgba(255, 161, 22, 0.3);
+}
+
+.social-connect-pill.whatsapp-pill:hover {
+  color: #25d366;
+  border-color: #25d366;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+

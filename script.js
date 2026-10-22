@@ -38,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const typewriterElement = document.getElementById('typewriter-text');
   const roles = [
     'Artificial Intelligence and Data Science Student',
-    'Web Developer',
-    'B.Tech CSE Student @ RCEE',
+    'B.Tech AI & Data Science Student @ RCEE',
     'Problem Solver & Builder',
     'Python & NLP Developer',
     'Technical Leader & Collaborator'
