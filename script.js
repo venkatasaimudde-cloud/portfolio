@@ -1,5 +1,5 @@
 /**
- * M. VENKATA SAI — PORTFOLIO INTERACTION ENGINE
+ * M. VENKATA SAI - PORTFOLIO INTERACTION ENGINE
  * Features: Typewriter, Dual Themes, Particle Canvas, Project Filter & Modal, Copy-to-Clipboard, Form Validation
  */
 
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectDetails = {
     mandimitra: {
       tag: 'Full-Stack Agri-Tech Application',
-      title: 'Mandi Mitra — Digital Agricultural Marketplace',
+      title: 'Mandi Mitra - Digital Agricultural Marketplace',
       overview:
         'A comprehensive platform engineered to bridge agricultural farmers and wholesale vendors. Built to eliminate opaque middleman pricing by introducing real-time market price discovery, authenticated accounts, and instant digital billing.',
       features: [
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     prakalp: {
       tag: 'Natural Language Processing & Python Web Tool',
-      title: 'Prakalp — Academic Text Simplifier',
+      title: 'Prakalp - Academic Text Simplifier',
       overview:
         'An intelligent Python application designed to assist students and researchers in comprehending dense academic prose. It parses academic passages, replaces cumbersome terminology with simpler synonyms, and computes standard readability metrics.',
       features: [

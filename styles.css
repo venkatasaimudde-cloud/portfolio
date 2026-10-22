@@ -1,5 +1,5 @@
 /* ==========================================================================
-   M. VENKATA SAI — PREMIUM PORTFOLIO DESIGN SYSTEM
+   M. VENKATA SAI - PREMIUM PORTFOLIO DESIGN SYSTEM
    Modern, High-Contrast Glassmorphic UI with Fluid Typography & Dual Themes
    ========================================================================== */
 
@@ -2296,7 +2296,7 @@ a.contact-value:hover {
 }
 
 .modal-feature-list li::before {
-  content: '✓';
+  content: '\2713';
   position: absolute;
   left: 0;
   color: var(--color-success);
