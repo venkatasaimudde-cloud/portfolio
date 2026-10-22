@@ -373,6 +373,32 @@ img, svg {
   display: block;
 }
 
+/* PDF Download Button */
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: var(--text-primary);
+  background: rgba(99, 102, 241, 0.12);
+  text-decoration: none;
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  transition: all var(--transition-fast);
+}
+
+.pdf-btn:hover {
+  background: var(--brand-primary);
+  color: #ffffff;
+  border-color: var(--brand-primary);
+  box-shadow: 0 4px 14px var(--brand-glow);
+  transform: translateY(-2px);
+}
+
 /* Mobile Hamburger Button */
 .mobile-menu-btn {
   display: none;
@@ -2552,4 +2578,98 @@ a.contact-value:hover {
   border-color: #25d366;
   box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
 }
+
+/* ==========================================================================
+   PRINT / PDF EXPORT STYLES
+   ========================================================================== */
+@media print {
+  @page {
+    margin: 12mm;
+    size: A4 portrait;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #07090e !important;
+    color: #f1f5f9 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Hide interactive/decorative elements */
+  #ambient-canvas,
+  .theme-toggle-btn,
+  .mobile-menu-btn,
+  #back-to-top,
+  #toast-container,
+  .project-modal,
+  .btn-scroll-indicator,
+  .nav-cta,
+  .copy-btn,
+  .filter-tab {
+    display: none !important;
+  }
+
+  /* Header adjustments */
+  .site-header {
+    position: static !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    padding: 1rem 0 !important;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Layout and page break hygiene */
+  .section {
+    padding: 2rem 0 !important;
+    page-break-inside: auto;
+  }
+
+  .project-card,
+  .story-card,
+  .timeline-item,
+  .skill-category-card,
+  .contact-info-card,
+  .contact-social-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .hero-social-bar,
+  .social-side-by-side,
+  .footer-social-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  .hero-social-link,
+  .social-connect-pill,
+  .footer-social-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+}
+
 
