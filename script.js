@@ -7,6 +7,155 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // ==========================================
+  // 0. CINEMATIC ENTRANCE ANIMATION
+  // ==========================================
+  const cinematicEl    = document.getElementById('cinematic-entrance');
+  const progressFill   = document.getElementById('cinematic-progress-fill');
+  const percentLabel   = document.getElementById('cinematic-percent');
+  const skipBtn        = document.getElementById('cinematic-skip-btn');
+  const canvas         = document.getElementById('cinematic-canvas');
+
+  if (cinematicEl && canvas) {
+    // --- A. Particle canvas setup ---
+    const ctx = canvas.getContext('2d');
+
+    function resizeCinematicCanvas() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCinematicCanvas();
+    window.addEventListener('resize', resizeCinematicCanvas);
+
+    // Particles: some float slowly, some are fast neon streaks
+    const particles = [];
+    const PARTICLE_COUNT = 90;
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const isStreak = i < 18;
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: isStreak ? Math.random() * 1.2 + 0.3 : Math.random() * 2.2 + 0.5,
+        vx: isStreak ? (Math.random() - 0.5) * 4.5 : (Math.random() - 0.5) * 0.45,
+        vy: isStreak ? (Math.random() - 0.5) * 4.5 : (Math.random() - 0.5) * 0.45,
+        alpha: Math.random() * 0.6 + 0.3,
+        color: isStreak
+          ? ['#00f0ff', '#8b5cf6', '#d946ef', '#ffffff'][Math.floor(Math.random() * 4)]
+          : ['#00f0ff', '#8b5cf6', '#d946ef', '#38bdf8', '#ffffff'][Math.floor(Math.random() * 5)],
+        tail: isStreak,
+        tailLen: isStreak ? Math.random() * 50 + 25 : 0,
+        angle: Math.atan2((Math.random() - 0.5), (Math.random() - 0.5)),
+      });
+    }
+
+    let rafId;
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const p of particles) {
+        // Draw tail for streak particles
+        if (p.tail) {
+          const grad = ctx.createLinearGradient(
+            p.x - Math.cos(p.angle) * p.tailLen,
+            p.y - Math.sin(p.angle) * p.tailLen,
+            p.x, p.y
+          );
+          grad.addColorStop(0, 'transparent');
+          grad.addColorStop(1, p.color);
+          ctx.beginPath();
+          ctx.moveTo(p.x - Math.cos(p.angle) * p.tailLen, p.y - Math.sin(p.angle) * p.tailLen);
+          ctx.lineTo(p.x, p.y);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = p.r;
+          ctx.globalAlpha = p.alpha * 0.5;
+          ctx.stroke();
+        }
+
+        // Draw particle dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        // Move
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce gently at edges
+        if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        // Twinkle
+        p.alpha += (Math.random() - 0.5) * 0.04;
+        p.alpha = Math.max(0.1, Math.min(0.95, p.alpha));
+      }
+
+      rafId = requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // --- B. Progress counter 0 → 100% over ~2.8s ---
+    let progress = 0;
+    const totalDuration = 2800; // ms
+    const interval      = 28;   // ms per tick
+    const steps         = totalDuration / interval;
+    const increment     = 100 / steps;
+
+    const counterInterval = setInterval(() => {
+      progress = Math.min(100, progress + increment + Math.random() * 0.8);
+      const pct = Math.round(progress);
+
+      if (progressFill) progressFill.style.width = pct + '%';
+      if (percentLabel) percentLabel.textContent  = pct + '%';
+
+      if (progress >= 100) {
+        clearInterval(counterInterval);
+        dismissCinematic();
+      }
+    }, interval);
+
+    // --- C. Dismiss / transition to site ---
+    function dismissCinematic() {
+      cancelAnimationFrame(rafId);
+      cinematicEl.classList.add('exit');
+      document.body.classList.remove('cinematic-active');
+
+      setTimeout(() => {
+        cinematicEl.style.display = 'none';
+      }, 950);
+    }
+
+    // Skip button
+    if (skipBtn) {
+      skipBtn.addEventListener('click', () => {
+        clearInterval(counterInterval);
+        dismissCinematic();
+      });
+    }
+  }
+
+  // ==========================================
+  // SKILLS: IntersectionObserver for Cyber Progress Bars
+  // ==========================================
+  const skillsSection = document.getElementById('skills');
+  if (skillsSection) {
+    const barFills = skillsSection.querySelectorAll('.cyber-bar-fill');
+    const skillsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          barFills.forEach(fill => fill.classList.add('animated'));
+          skillsObserver.unobserve(skillsSection);
+        }
+      });
+    }, { threshold: 0.15 });
+    skillsObserver.observe(skillsSection);
+  }
+
+
+
+  // ==========================================
   // 1. THEME SWITCHER (Dark & Light Mode)
   // ==========================================
   const themeToggleBtn = document.getElementById('theme-toggle-btn');

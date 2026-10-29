@@ -149,6 +149,431 @@ body {
   opacity: 0.65;
 }
 
+/* ======================================================== */
+/* CINEMATIC ENTRANCE EXPERIENCE (Venkata Sai Mudde)        */
+/* ======================================================== */
+body.cinematic-active {
+  overflow: hidden !important;
+}
+
+.cinematic-entrance {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000000;
+  perspective: 1200px;
+  transform: translateZ(0);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.cinematic-entrance.exit {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.12) translateY(-25px);
+  filter: blur(14px);
+}
+
+/* Deep Black Base */
+.cinematic-bg-black {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  z-index: 1;
+}
+
+/* Futuristic 3D Animated Grid Plane */
+.cinematic-perspective-grid {
+  position: absolute;
+  left: -50%;
+  bottom: -40%;
+  width: 200%;
+  height: 120%;
+  z-index: 2;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.16) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(400px) rotateX(72deg);
+  transform-origin: 50% 100%;
+  mask-image: radial-gradient(ellipse at 50% 100%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 100%, #000 30%, transparent 80%);
+  animation: gridDrift 20s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@keyframes gridDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 600px; }
+}
+
+/* Canvas Particles & Light Streaks */
+.cinematic-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Cinematic Glowing Blue & Violet Light Sweep */
+.cinematic-light-sweep {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 120%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.08) 25%,
+    rgba(0, 240, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(139, 92, 246, 0.45) 55%,
+    rgba(217, 70, 239, 0.15) 75%,
+    transparent 100%
+  );
+  filter: blur(8px);
+  opacity: 0;
+  animation: lightSweepGlide 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes lightSweepGlide {
+  0% {
+    left: -120%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.9;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+/* Skip Intro Button */
+.cinematic-skip-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2.25rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 999px;
+  color: #e2e8f0;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  opacity: 0.85;
+}
+
+.cinematic-skip-btn:hover {
+  opacity: 1;
+  background: rgba(0, 240, 255, 0.15);
+  border-color: #00f0ff;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Center Stage */
+.cinematic-stage {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 950px;
+  padding: 0 1.5rem;
+}
+
+/* Glowing Circular Ring around Profile Image */
+.cinematic-avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: avatarPop 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes avatarPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.65);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.cinematic-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cinematic-ring.ring-outer {
+  width: 144px;
+  height: 144px;
+  border: 2px dashed rgba(0, 240, 255, 0.7);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+  animation: rotateOuter 14s linear infinite;
+}
+
+.cinematic-ring.ring-mid {
+  width: 132px;
+  height: 132px;
+  border: 2.5px solid transparent;
+  border-top-color: #8b5cf6;
+  border-bottom-color: #00f0ff;
+  border-right-color: #d946ef;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.45);
+  animation: rotateMid 7s linear infinite reverse;
+}
+
+.cinematic-ring.ring-pulse {
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.5), inset 0 0 25px rgba(217, 70, 239, 0.4);
+  animation: ringPulseGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes rotateOuter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateMid {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ringPulseGlow {
+  0% { transform: scale(0.96); opacity: 0.6; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
+
+.cinematic-avatar-disc {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+  background: #0b0f19;
+  z-index: 2;
+}
+
+.cinematic-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Letter-by-Letter Cinematic Name Reveal with 3D Depth */
+.cinematic-name {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  perspective: 800px;
+}
+
+.name-part {
+  display: inline-flex;
+}
+
+.name-space {
+  display: inline-block;
+  width: 0.75ch;
+}
+
+.c-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(35px) translateZ(40px) scale(0.8);
+  filter: blur(10px);
+  animation: letterReveal3D 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.35s + var(--char-i) * 0.055s);
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes letterReveal3D {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) translateZ(40px) scale(0.8);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Dual-Tone 3D Glow Palette Matching Reference Image */
+.part-venkata .c-letter {
+  color: #ff9d00;
+  text-shadow: 
+    0 0 12px rgba(255, 157, 0, 0.85),
+    0 0 30px rgba(255, 157, 0, 0.5),
+    0 4px 15px rgba(0, 0, 0, 0.95);
+}
+
+.part-sai .c-letter {
+  color: #00f0ff;
+  text-shadow: 
+    0 0 14px rgba(0, 240, 255, 0.95),
+    0 0 35px rgba(0, 240, 255, 0.6),
+    0 4px 15px rgba(0, 0, 0, 0.95);
+}
+
+.part-mudde .c-letter {
+  color: #00f5d4;
+  text-shadow: 
+    0 0 12px rgba(0, 245, 212, 0.85),
+    0 0 30px rgba(139, 92, 246, 0.5),
+    0 4px 15px rgba(0, 0, 0, 0.95);
+}
+
+/* Cinematic Subtitle (Smooth Upward Motion) */
+.cinematic-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.88rem, 1.6vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(226, 232, 240, 0.9);
+  text-transform: uppercase;
+  margin: 0 0 2.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(8px);
+  animation: subtitleSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+}
+
+@keyframes subtitleSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.cinematic-subtitle .sub-word {
+  color: rgba(241, 245, 249, 0.92);
+}
+
+.cinematic-subtitle .sub-sep {
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+/* Charging Progress Bar & Stats */
+.cinematic-progress-wrap {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  opacity: 0;
+  animation: fadeInProgress 0.6s ease 0.6s forwards;
+}
+
+@keyframes fadeInProgress {
+  to { opacity: 1; }
+}
+
+.cinematic-progress-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.cinematic-progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00f0ff, #8b5cf6, #d946ef);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.8), 0 0 24px rgba(217, 70, 239, 0.5);
+  transition: width 0.1s linear;
+}
+
+.cinematic-progress-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.cinematic-status-text {
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.cinematic-percent {
+  color: #00f0ff;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
 /* Layout Container */
 .container {
   width: 100%;
@@ -1046,117 +1471,336 @@ img, svg {
   line-height: 1.6;
 }
 
-/* --- 8. SKILLS SECTION --- */
-.skills-categories-grid {
+/* --- 8. SKILLS SECTION (Technical Skills & Expertise - Cyber HUD Design) --- */
+.skills-title-cyber {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-align: center;
+}
+
+.skills-highlight {
+  color: #8b5cf6;
+  background: linear-gradient(135deg, #00f0ff 0%, #8b5cf6 50%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+}
+
+.skills-accent-line {
+  width: 72px;
+  height: 4px;
+  margin: 0.85rem auto 1.5rem auto;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #00f0ff, #8b5cf6, #d946ef);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.65);
+}
+
+.cyber-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  margin-top: 1.5rem;
 }
 
-.skill-category-card {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
+/* Cyber HUD Glass Card */
+.cyber-skill-card {
+  position: relative;
+  background: rgba(8, 14, 28, 0.82);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 16px;
+  padding: 2.25rem;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
-.category-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.75rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-subtle);
+.cyber-skill-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 18px 45px -10px rgba(0, 240, 255, 0.22), inset 0 0 24px rgba(0, 240, 255, 0.06);
 }
 
-.category-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+/* Corner Bracket Ticks */
+.corner-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(0, 240, 255, 0.7);
+  pointer-events: none;
+}
+
+.corner-bracket.top-left {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid rgba(0, 240, 255, 0.75);
+  border-left: 2px solid rgba(0, 240, 255, 0.75);
+  border-top-left-radius: 4px;
+}
+
+.corner-bracket.top-right {
+  top: 10px;
+  right: 10px;
+  border-top: 2px solid rgba(0, 240, 255, 0.75);
+  border-right: 2px solid rgba(0, 240, 255, 0.75);
+  border-top-right-radius: 4px;
+}
+
+.corner-bracket.bottom-left {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.75);
+  border-left: 2px solid rgba(0, 240, 255, 0.75);
+  border-bottom-left-radius: 4px;
+}
+
+.corner-bracket.bottom-right {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.75);
+  border-right: 2px solid rgba(0, 240, 255, 0.75);
+  border-bottom-right-radius: 4px;
+}
+
+/* Icon Box with Drop Glow */
+.cyber-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.frontend-icon {
-  background: rgba(99, 102, 241, 0.15);
-  color: var(--brand-primary);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+.cyber-skill-card:hover .cyber-icon-box {
+  transform: scale(1.06);
 }
 
-.backend-icon {
-  background: rgba(6, 182, 212, 0.15);
-  color: var(--brand-secondary);
-  border: 1px solid rgba(6, 182, 212, 0.3);
+.frontend-cyber-icon {
+  background: linear-gradient(135deg, #06b6d4, #0284c7);
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(6, 182, 212, 0.6);
 }
 
-.tools-icon {
-  background: rgba(168, 85, 247, 0.15);
-  color: var(--brand-accent);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+.data-cyber-icon {
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.6);
 }
 
-.soft-icon {
-  background: rgba(16, 185, 129, 0.15);
-  color: var(--color-success);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+.ai-cyber-icon {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(168, 85, 247, 0.6);
 }
 
-.category-title-group h3 {
-  font-size: 1.15rem;
+.lead-cyber-icon {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(16, 185, 129, 0.6);
+}
+
+/* Card Title */
+.cyber-card-title {
+  font-size: 1.45rem;
   font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.01em;
 }
 
-.category-count {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+/* Monospace Status Tags */
+.cyber-status-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
 }
 
-.skills-tag-list {
+.cyber-status-tag.tag-magenta {
+  color: #e879f9;
+  background: rgba(217, 70, 239, 0.12);
+  border: 1px solid rgba(217, 70, 239, 0.35);
+  text-shadow: 0 0 8px rgba(217, 70, 239, 0.6);
+}
+
+.cyber-status-tag.tag-cyan {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}
+
+.cyber-status-tag.tag-purple {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  text-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
+}
+
+.cyber-status-tag.tag-emerald {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
+}
+
+/* Card Description */
+.cyber-card-desc {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+  min-height: 46px;
+}
+
+/* Skills Progress Bars List */
+.cyber-skills-bars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-bottom: 1.75rem;
+}
+
+.cyber-skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cyber-skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cyber-skill-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.cyber-skill-pct {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* Glowing Bar Track & Animated Fill with Luminous Orb */
+.cyber-bar-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: visible;
+}
+
+.cyber-bar-fill {
+  position: relative;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00d2ff 0%, #00f0ff 45%, #a855f7 80%, #d946ef 100%);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(168, 85, 247, 0.4);
+  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-bar-fill.animated {
+  width: var(--skill-width);
+}
+
+/* Glowing Pulsating Orb at Bar Tip */
+.cyber-bar-orb {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff, 0 0 18px #00f0ff, 0 0 28px #d946ef;
+  animation: orbPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+  0% {
+    box-shadow: 0 0 8px #ffffff, 0 0 14px #00f0ff, 0 0 22px #d946ef;
+    transform: translateY(-50%) scale(0.9);
+  }
+  100% {
+    box-shadow: 0 0 14px #ffffff, 0 0 24px #00f0ff, 0 0 36px #d946ef;
+    transform: translateY(-50%) scale(1.25);
+  }
+}
+
+/* Badges Row */
+.cyber-badges-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
-}
-
-.skill-pill {
-  display: flex;
-  align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 0.85rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.skill-pill:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-glow);
-  transform: translateY(-2px);
+.cyber-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.28rem 0.7rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  transition: all 0.2s ease;
 }
 
-.skill-name {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-primary);
+.cyber-badge:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
-.skill-level {
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
+/* Responsive & Theme Adapters */
+@media (max-width: 900px) {
+  .cyber-skills-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.highlight-pill {
-  border-color: rgba(99, 102, 241, 0.35);
-  background: rgba(99, 102, 241, 0.08);
+[data-theme="light"] .cyber-skill-card {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(6, 182, 212, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
 }
 
-.highlight-pill .skill-name {
-  color: var(--brand-secondary);
+[data-theme="light"] .cyber-card-title,
+[data-theme="light"] .cyber-skill-label,
+[data-theme="light"] .cyber-skill-pct {
+  color: #0f172a;
+}
+
+[data-theme="light"] .cyber-card-desc {
+  color: #475569;
+}
+
+[data-theme="light"] .cyber-badge {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #334155;
 }
 
 /* --- 9. PROJECTS SECTION --- */

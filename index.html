@@ -33,7 +33,81 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="cinematic-active">
+  <!-- ======================================================== -->
+  <!-- CINEMATIC ENTRANCE ANIMATION (Venkata Sai Mudde)         -->
+  <!-- ======================================================== -->
+  <div id="cinematic-entrance" class="cinematic-entrance" aria-label="Welcome to Venkata Sai Mudde Portfolio">
+    <!-- Pure Black Deep Layer -->
+    <div class="cinematic-bg-black"></div>
+
+    <!-- Futuristic Animated 3D Perspective Grid -->
+    <div class="cinematic-perspective-grid" aria-hidden="true"></div>
+
+    <!-- Floating Particles & Soft Neon Light Streaks Canvas -->
+    <canvas id="cinematic-canvas" class="cinematic-canvas" aria-hidden="true"></canvas>
+
+    <!-- Cinematic Glowing Blue & Violet Light Sweep Beam -->
+    <div class="cinematic-light-sweep" aria-hidden="true"></div>
+
+    <!-- Skip Button -->
+    <button id="cinematic-skip-btn" class="cinematic-skip-btn" type="button" aria-label="Skip Intro Animation">
+      <span>Skip Intro</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="5 4 15 12 5 20 5 4"></polygon>
+        <line x1="19" y1="5" x2="19" y2="19"></line>
+      </svg>
+    </button>
+
+    <!-- Center Cinematic Stage -->
+    <div class="cinematic-stage">
+      <!-- Glowing Circular Ring around Profile Image -->
+      <div class="cinematic-avatar-container">
+        <div class="cinematic-ring ring-outer"></div>
+        <div class="cinematic-ring ring-mid"></div>
+        <div class="cinematic-ring ring-pulse"></div>
+        <div class="cinematic-avatar-disc">
+          <img src="profile.jpg" alt="Venkata Sai Mudde" class="cinematic-avatar-img">
+        </div>
+      </div>
+
+      <!-- Letter-by-Letter Cinematic Name Reveal with 3D Depth & Gradient -->
+      <h1 class="cinematic-name" id="cinematic-name" aria-label="VENKATA SAI MUDDE">
+        <span class="name-part part-venkata">
+          <span class="c-letter" style="--char-i: 0;">V</span><span class="c-letter" style="--char-i: 1;">E</span><span class="c-letter" style="--char-i: 2;">N</span><span class="c-letter" style="--char-i: 3;">K</span><span class="c-letter" style="--char-i: 4;">A</span><span class="c-letter" style="--char-i: 5;">T</span><span class="c-letter" style="--char-i: 6;">A</span>
+        </span>
+        <span class="name-space">&nbsp;</span>
+        <span class="name-part part-sai">
+          <span class="c-letter" style="--char-i: 7;">S</span><span class="c-letter" style="--char-i: 8;">A</span><span class="c-letter" style="--char-i: 9;">I</span>
+        </span>
+        <span class="name-space">&nbsp;</span>
+        <span class="name-part part-mudde">
+          <span class="c-letter" style="--char-i: 10;">M</span><span class="c-letter" style="--char-i: 11;">U</span><span class="c-letter" style="--char-i: 12;">D</span><span class="c-letter" style="--char-i: 13;">D</span><span class="c-letter" style="--char-i: 14;">E</span>
+        </span>
+      </h1>
+
+      <!-- Smooth Upward Subtitle Reveal -->
+      <p class="cinematic-subtitle" id="cinematic-subtitle">
+        <span class="sub-word">Aspiring Developer</span>
+        <span class="sub-sep">•</span>
+        <span class="sub-word">Creative Thinker</span>
+        <span class="sub-sep">•</span>
+        <span class="sub-word">Tech Enthusiast</span>
+      </p>
+
+      <!-- Charging Loader & Status Progress -->
+      <div class="cinematic-progress-wrap">
+        <div class="cinematic-progress-bar">
+          <div class="cinematic-progress-fill" id="cinematic-progress-fill"></div>
+        </div>
+        <div class="cinematic-progress-stats">
+          <span class="cinematic-status-text">SYSTEM INITIALIZED</span>
+          <span class="cinematic-percent" id="cinematic-percent">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Ambient Particle Canvas for Hero & Background -->
   <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
 
@@ -361,173 +435,278 @@
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
+    <!-- SKILLS SECTION (Technical Skills & Expertise - Cyber HUD Design) -->
     <section id="skills" class="section skills-section">
       <div class="container">
         <div class="section-header">
           <div class="section-tag">Competencies</div>
-          <h2 class="section-title">Technical Expertise & Power Skills</h2>
-          <p class="section-subtitle">Categorized skills backed by hands-on project implementations and academic
-            coursework.</p>
+          <h2 class="section-title skills-title-cyber">Technical <span class="skills-highlight">Skills</span> &amp; Expertise</h2>
+          <div class="skills-accent-line"></div>
+          <p class="section-subtitle">Categorized competencies, verified capabilities, and technical leadership backed by hands-on implementations.</p>
         </div>
 
-        <div class="skills-categories-grid">
-          <!-- Web & Frontend Development -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="category-icon frontend-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                  <polyline points="2 17 12 22 22 17" />
-                  <polyline points="2 12 12 17 22 12" />
-                </svg>
+        <div class="cyber-skills-grid">
+          <!-- CARD 1: Frontend & UI/UX (Exact Image 1 Design) -->
+          <div class="cyber-skill-card">
+            <span class="corner-bracket top-left"></span>
+            <span class="corner-bracket top-right"></span>
+            <span class="corner-bracket bottom-left"></span>
+            <span class="corner-bracket bottom-right"></span>
+
+            <div class="cyber-icon-box frontend-cyber-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3" ry="3"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="21" x2="9" y2="9"/>
+              </svg>
+            </div>
+
+            <h3 class="cyber-card-title">Frontend &amp; UI/UX</h3>
+            <span class="cyber-status-tag tag-magenta">FE.CORE: READY</span>
+
+            <p class="cyber-card-desc">Crafting responsive user interfaces, modern layouts, and intuitive digital experiences.</p>
+
+            <div class="cyber-skills-bars-list">
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Web Development</span>
+                  <span class="cyber-skill-pct">90%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 90%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
-              <div class="category-title-group">
-                <h3>Frontend Development</h3>
-                <span class="category-count">Modern Web & UI</span>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">UI/UX Design</span>
+                  <span class="cyber-skill-pct">85%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 85%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Modern React &amp; Frameworks</span>
+                  <span class="cyber-skill-pct">88%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 88%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="skills-tag-list">
-              <div class="skill-pill">
-                <span class="skill-name">HTML5</span>
-                <span class="skill-level">Semantic</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">CSS3 & Flex/Grid</span>
-                <span class="skill-level">Advanced</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">JavaScript (ES6+)</span>
-                <span class="skill-level">Proficient</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">React.js</span>
-                <span class="skill-level">Modern</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Tailwind CSS</span>
-                <span class="skill-level">Utility-first</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Responsive Design</span>
-                <span class="skill-level">Mobile-first</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">HTML5 Canvas</span>
-                <span class="skill-level">Interactive</span>
-              </div>
+
+            <div class="cyber-badges-row">
+              <span class="cyber-badge">HTML5</span>
+              <span class="cyber-badge">CSS3</span>
+              <span class="cyber-badge">JavaScript (ES6+)</span>
+              <span class="cyber-badge">React</span>
+              <span class="cyber-badge">Tailwind</span>
             </div>
           </div>
 
-          <!-- Backend & Programming -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="category-icon backend-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
-                  <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
-                  <line x1="6" x2="6.01" y1="6" y2="6" />
-                  <line x1="6" x2="6.01" y1="18" y2="18" />
-                </svg>
+          <!-- CARD 2: Data Operations (Exact Image 1 Design) -->
+          <div class="cyber-skill-card">
+            <span class="corner-bracket top-left"></span>
+            <span class="corner-bracket top-right"></span>
+            <span class="corner-bracket bottom-left"></span>
+            <span class="corner-bracket bottom-right"></span>
+
+            <div class="cyber-icon-box data-cyber-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+
+            <h3 class="cyber-card-title">Data Operations</h3>
+            <span class="cyber-status-tag tag-magenta">DATA.CORE: ACTIVE</span>
+
+            <p class="cyber-card-desc">Accurate data management, entry verification, reporting, and operational processing.</p>
+
+            <div class="cyber-skills-bars-list">
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Data Operator</span>
+                  <span class="cyber-skill-pct">92%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 92%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
-              <div class="category-title-group">
-                <h3>Backend & Programming</h3>
-                <span class="category-count">Languages & APIs</span>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Data Verification &amp; Accuracy</span>
+                  <span class="cyber-skill-pct">94%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 94%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Database &amp; Pipeline Management</span>
+                  <span class="cyber-skill-pct">89%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 89%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="skills-tag-list">
-              <div class="skill-pill">
-                <span class="skill-name">Python</span>
-                <span class="skill-level">Core & NLP</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Node.js / Express</span>
-                <span class="skill-level">RESTful</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Flask / Python Web</span>
-                <span class="skill-level">Applied</span>
-              </div>
+
+            <div class="cyber-badges-row">
+              <span class="cyber-badge">Data Processing</span>
+              <span class="cyber-badge">Excel / Sheets</span>
+              <span class="cyber-badge">SQL</span>
+              <span class="cyber-badge">Verification</span>
             </div>
           </div>
 
-          <!-- Tools & Practices -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="category-icon tools-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
+          <!-- CARD 3: AI & NLP Engineering -->
+          <div class="cyber-skill-card">
+            <span class="corner-bracket top-left"></span>
+            <span class="corner-bracket top-right"></span>
+            <span class="corner-bracket bottom-left"></span>
+            <span class="corner-bracket bottom-right"></span>
+
+            <div class="cyber-icon-box ai-cyber-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a4 4 0 0 0-4 4c0 1.5.8 2.8 2 3.5V11a2 2 0 0 0 2 2v2a2 2 0 0 1-2 2H8a4 4 0 0 0-4 4"/>
+                <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V11a2 2 0 0 1-2 2v2a2 2 0 0 0 2 2h2a4 4 0 0 1 4 4"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+
+            <h3 class="cyber-card-title">Artificial Intelligence &amp; NLP</h3>
+            <span class="cyber-status-tag tag-magenta">AI.CORE: ONLINE</span>
+
+            <p class="cyber-card-desc">Applied machine learning algorithms, Python NLP pipeline development, and smart predictive models.</p>
+
+            <div class="cyber-skills-bars-list">
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Python &amp; Computational Logic</span>
+                  <span class="cyber-skill-pct">90%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 90%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
-              <div class="category-title-group">
-                <h3>Developer Tools</h3>
-                <span class="category-count">Workflow & Build</span>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Natural Language Processing (Prakalp)</span>
+                  <span class="cyber-skill-pct">86%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 86%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Machine Learning &amp; Analytics</span>
+                  <span class="cyber-skill-pct">85%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 85%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="skills-tag-list">
-              <div class="skill-pill">
-                <span class="skill-name">Git & GitHub</span>
-                <span class="skill-level">Version Control</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Vite</span>
-                <span class="skill-level">Bundler</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">VS Code / Antigravity</span>
-                <span class="skill-level">IDE</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Chrome DevTools</span>
-                <span class="skill-level">Debugging</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Terminal / CLI</span>
-                <span class="skill-level">PowerShell/Bash</span>
-              </div>
+
+            <div class="cyber-badges-row">
+              <span class="cyber-badge">Python</span>
+              <span class="cyber-badge">NLP</span>
+              <span class="cyber-badge">NLTK</span>
+              <span class="cyber-badge">Flask API</span>
+              <span class="cyber-badge">AI/ML</span>
             </div>
           </div>
 
-          <!-- Soft & Leadership Skills (Original Power Skills) -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="category-icon soft-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
+          <!-- CARD 4: Power & Leadership Skills -->
+          <div class="cyber-skill-card">
+            <span class="corner-bracket top-left"></span>
+            <span class="corner-bracket top-right"></span>
+            <span class="corner-bracket bottom-left"></span>
+            <span class="corner-bracket bottom-right"></span>
+
+            <div class="cyber-icon-box lead-cyber-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+
+            <h3 class="cyber-card-title">Power &amp; Leadership Skills</h3>
+            <span class="cyber-status-tag tag-magenta">LEAD.CORE: VERIFIED</span>
+
+            <p class="cyber-card-desc">Strategic technical leadership, collaborative project execution, rapid problem-solving, and clear communication.</p>
+
+            <div class="cyber-skills-bars-list">
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Technical Leadership</span>
+                  <span class="cyber-skill-pct">94%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 94%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
-              <div class="category-title-group">
-                <h3>Power & Leadership Skills</h3>
-                <span class="category-count">Professional Growth</span>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Problem Solving &amp; Analysis</span>
+                  <span class="cyber-skill-pct">92%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 92%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cyber-skill-group">
+                <div class="cyber-skill-header">
+                  <span class="cyber-skill-label">Communication &amp; Team Management</span>
+                  <span class="cyber-skill-pct">91%</span>
+                </div>
+                <div class="cyber-bar-track">
+                  <div class="cyber-bar-fill" style="--skill-width: 91%;">
+                    <span class="cyber-bar-orb"></span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="skills-tag-list">
-              <div class="skill-pill highlight-pill">
-                <span class="skill-name">Leadership</span>
-                <span class="skill-level">Demonstrated</span>
-              </div>
-              <div class="skill-pill highlight-pill">
-                <span class="skill-name">Communication</span>
-                <span class="skill-level">Articulate</span>
-              </div>
-              <div class="skill-pill highlight-pill">
-                <span class="skill-name">Project Management</span>
-                <span class="skill-level">Organized</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Problem Solving</span>
-                <span class="skill-level">Analytical</span>
-              </div>
-              <div class="skill-pill">
-                <span class="skill-name">Team Coordination</span>
-                <span class="skill-level">Collaborative</span>
-              </div>
+
+            <div class="cyber-badges-row">
+              <span class="cyber-badge">Leadership</span>
+              <span class="cyber-badge">Communication</span>
+              <span class="cyber-badge">Project Management</span>
+              <span class="cyber-badge">Agile</span>
             </div>
           </div>
         </div>
