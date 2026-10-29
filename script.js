@@ -7,136 +7,120 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // ==========================================
-  // 0. CINEMATIC ENTRANCE ANIMATION (4-second auto-dismiss, no skip)
+  // 0. CINEMATIC ENTRANCE ANIMATION (guaranteed 4s auto-dismiss)
   // ==========================================
-  const cinematicEl  = document.getElementById('cinematic-entrance');
-  const progressFill = document.getElementById('cinematic-progress-fill');
-  const percentLabel = document.getElementById('cinematic-percent');
-  const canvas       = document.getElementById('cinematic-canvas');
+  (function initCinematic() {
+    const overlay = document.getElementById('cinematic-entrance');
+    if (!overlay) return;
 
-  if (cinematicEl && canvas) {
-    // Ensure body stays locked during animation
-    document.body.classList.add('cinematic-active');
+    // Lock scroll
+    document.body.style.overflow = 'hidden';
 
-    // --- A. Particle canvas setup ---
-    const ctx = canvas.getContext('2d');
+    const fillEl   = document.getElementById('cinematic-progress-fill');
+    const pctEl    = document.getElementById('cinematic-percent');
+    const cvs      = document.getElementById('cinematic-canvas');
 
-    function resizeCinematicCanvas() {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCinematicCanvas();
-    window.addEventListener('resize', resizeCinematicCanvas);
-
-    // Particles: slow floaters + fast neon light streaks
-    const particles = [];
-    const PARTICLE_COUNT = 90;
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const isStreak = i < 18;
-      particles.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        r: isStreak ? Math.random() * 1.2 + 0.3 : Math.random() * 2.2 + 0.5,
-        vx: isStreak ? (Math.random() - 0.5) * 4.5 : (Math.random() - 0.5) * 0.45,
-        vy: isStreak ? (Math.random() - 0.5) * 4.5 : (Math.random() - 0.5) * 0.45,
-        alpha: Math.random() * 0.6 + 0.3,
-        color: isStreak
-          ? ['#00f0ff', '#8b5cf6', '#d946ef', '#ffffff'][Math.floor(Math.random() * 4)]
-          : ['#00f0ff', '#8b5cf6', '#d946ef', '#38bdf8', '#ffffff'][Math.floor(Math.random() * 5)],
-        tail: isStreak,
-        tailLen: isStreak ? Math.random() * 50 + 25 : 0,
-        angle: Math.atan2((Math.random() - 0.5), (Math.random() - 0.5)),
+    // ---- Particle canvas ----
+    if (cvs) {
+      const ctx = cvs.getContext('2d');
+      cvs.width  = window.innerWidth;
+      cvs.height = window.innerHeight;
+      window.addEventListener('resize', () => {
+        cvs.width  = window.innerWidth;
+        cvs.height = window.innerHeight;
       });
-    }
 
-    let rafId;
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const p of particles) {
-        if (p.tail) {
-          const grad = ctx.createLinearGradient(
-            p.x - Math.cos(p.angle) * p.tailLen,
-            p.y - Math.sin(p.angle) * p.tailLen,
-            p.x, p.y
-          );
-          grad.addColorStop(0, 'transparent');
-          grad.addColorStop(1, p.color);
-          ctx.beginPath();
-          ctx.moveTo(p.x - Math.cos(p.angle) * p.tailLen, p.y - Math.sin(p.angle) * p.tailLen);
-          ctx.lineTo(p.x, p.y);
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = p.r;
-          ctx.globalAlpha = p.alpha * 0.5;
-          ctx.stroke();
+      const pts = [];
+      for (let i = 0; i < 80; i++) {
+        const streak = i < 15;
+        pts.push({
+          x: Math.random() * cvs.width, y: Math.random() * cvs.height,
+          r: streak ? 0.8 : Math.random() * 2 + 0.4,
+          vx: streak ? (Math.random()-0.5)*5 : (Math.random()-0.5)*0.4,
+          vy: streak ? (Math.random()-0.5)*5 : (Math.random()-0.5)*0.4,
+          a: Math.random()*0.5+0.3,
+          c: ['#00f0ff','#8b5cf6','#d946ef','#ffffff'][Math.floor(Math.random()*4)],
+          streak, tl: streak ? Math.random()*45+20 : 0,
+          ang: Math.atan2(Math.random()-0.5, Math.random()-0.5)
+        });
+      }
+
+      let raf;
+      function draw() {
+        ctx.clearRect(0, 0, cvs.width, cvs.height);
+        for (const p of pts) {
+          if (p.streak) {
+            const g = ctx.createLinearGradient(
+              p.x - Math.cos(p.ang)*p.tl, p.y - Math.sin(p.ang)*p.tl, p.x, p.y);
+            g.addColorStop(0, 'transparent'); g.addColorStop(1, p.c);
+            ctx.beginPath();
+            ctx.moveTo(p.x - Math.cos(p.ang)*p.tl, p.y - Math.sin(p.ang)*p.tl);
+            ctx.lineTo(p.x, p.y);
+            ctx.strokeStyle = g; ctx.lineWidth = p.r;
+            ctx.globalAlpha = p.a * 0.5; ctx.stroke();
+          }
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+          ctx.fillStyle = p.c; ctx.globalAlpha = p.a; ctx.fill();
+          ctx.globalAlpha = 1;
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > cvs.width)  p.vx *= -1;
+          if (p.y < 0 || p.y > cvs.height) p.vy *= -1;
+          p.a = Math.max(0.1, Math.min(0.9, p.a + (Math.random()-0.5)*0.04));
         }
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        p.alpha += (Math.random() - 0.5) * 0.04;
-        p.alpha = Math.max(0.1, Math.min(0.95, p.alpha));
+        raf = requestAnimationFrame(draw);
       }
-      rafId = requestAnimationFrame(drawParticles);
+      draw();
+
+      // stop canvas when overlay is gone
+      window._stopCinematicCanvas = () => cancelAnimationFrame(raf);
     }
-    drawParticles();
 
-    // --- B. Progress counter 0 → 100% over exactly 3.5 seconds ---
-    const TOTAL_MS  = 3500;
-    const TICK_MS   = 30;
-    const TOTAL_TICKS = TOTAL_MS / TICK_MS;
-    let progress    = 0;
-    let tickCount   = 0;
-    let dismissed   = false;
+    // ---- Progress bar counter over 3600ms ----
+    const START = Date.now();
+    const DURATION = 3600;
+    const tick = setInterval(() => {
+      const elapsed = Date.now() - START;
+      const t = Math.min(1, elapsed / DURATION);
+      const pct = Math.round(t * 100);
+      if (fillEl) fillEl.style.width = pct + '%';
+      if (pctEl)  pctEl.textContent  = pct + '%';
+      if (t >= 1) clearInterval(tick);
+    }, 30);
 
-    const counterTimer = setInterval(() => {
-      tickCount++;
-      // Ease-in-out curve: slow start, fast middle, slow end
-      const t = tickCount / TOTAL_TICKS;
-      const eased = t < 0.5
-        ? 2 * t * t
-        : -1 + (4 - 2 * t) * t;
-      progress = Math.round(Math.min(100, eased * 100));
+    // ---- GUARANTEED dismiss after 4 seconds ----
+    function dismiss() {
+      clearInterval(tick);
+      if (window._stopCinematicCanvas) window._stopCinematicCanvas();
 
-      if (progressFill) progressFill.style.width = progress + '%';
-      if (percentLabel) percentLabel.textContent  = progress + '%';
-
-      if (tickCount >= TOTAL_TICKS && !dismissed) {
-        clearInterval(counterTimer);
-        // Ensure bar shows 100% visually before dismissing
-        if (progressFill) progressFill.style.width = '100%';
-        if (percentLabel) percentLabel.textContent  = '100%';
-        // Small pause at 100% so user can see it, then dismiss
-        setTimeout(dismissCinematic, 400);
-      }
-    }, TICK_MS);
-
-    // --- C. Dismiss: fade out overlay, unlock page, remove from DOM ---
-    function dismissCinematic() {
-      if (dismissed) return;
-      dismissed = true;
-      cancelAnimationFrame(rafId);
-
-      // Unlock scrolling immediately
+      // 1. Immediately unlock the page
+      document.body.style.overflow = '';
       document.body.classList.remove('cinematic-active');
 
-      // Trigger CSS exit transition
-      cinematicEl.classList.add('exit');
+      // 2. Force 100% on bar
+      if (fillEl) fillEl.style.width = '100%';
+      if (pctEl)  pctEl.textContent  = '100%';
 
-      // After transition completes, fully remove the element
+      // 3. Immediately block all interaction with overlay
+      overlay.style.pointerEvents = 'none';
+
+      // 4. Fade out smoothly
+      overlay.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      overlay.style.opacity    = '0';
+      overlay.style.transform  = 'scale(1.05)';
+
+      // 5. Remove from DOM completely after fade
       setTimeout(() => {
-        if (cinematicEl.parentNode) {
-          cinematicEl.parentNode.removeChild(cinematicEl);
-        }
-      }, 1000);
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+        overlay.style.zIndex = '-1';
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      }, 850);
     }
-  }
+
+    // Hard guarantee: always dismiss at 4s no matter what
+    setTimeout(dismiss, 4000);
+  })();
+
 
   // ==========================================
   // SKILLS: IntersectionObserver for Cyber Progress Bars
