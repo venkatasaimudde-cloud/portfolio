@@ -225,64 +225,10 @@
             <div class="profile-card-glow" aria-hidden="true"></div>
             <div class="profile-card">
               <div class="profile-image-container">
-                <!-- High-fidelity Developer Avatar Illustration -->
-                <div class="avatar-box">
-                  <svg class="avatar-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    role="img" aria-label="Venkata Sai Developer Profile Visual">
-                    <defs>
-                      <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#312e81" />
-                        <stop offset="50%" stop-color="#1e1b4b" />
-                        <stop offset="100%" stop-color="#0f172a" />
-                      </linearGradient>
-                      <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#f5d0b5" />
-                        <stop offset="100%" stop-color="#e2af8e" />
-                      </linearGradient>
-                      <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#6366f1" />
-                        <stop offset="100%" stop-color="#06b6d4" />
-                      </linearGradient>
-                    </defs>
-                    <!-- Background Circle -->
-                    <circle cx="140" cy="140" r="130" fill="url(#bgGrad)" stroke="url(#accentGrad)" stroke-width="3" />
-                    <!-- Ambient Code Lines Background -->
-                    <rect x="50" y="55" width="50" height="4" rx="2" fill="#6366f1" opacity="0.4" />
-                    <rect x="50" y="66" width="35" height="4" rx="2" fill="#06b6d4" opacity="0.3" />
-                    <rect x="195" y="55" width="45" height="4" rx="2" fill="#a855f7" opacity="0.4" />
-                    <rect x="205" y="66" width="35" height="4" rx="2" fill="#6366f1" opacity="0.3" />
-                    <!-- Stylized Developer Silhouette -->
-                    <!-- Body / Blazer -->
-                    <path d="M70 260 C70 210 100 185 140 185 C180 185 210 210 210 260 Z" fill="#1e293b" />
-                    <path d="M110 260 L140 210 L170 260 Z" fill="#0f172a" />
-                    <!-- Inner Shirt & Collar -->
-                    <polygon points="125,185 155,185 140,225" fill="#f8fafc" />
-                    <polygon points="135,185 145,185 140,215" fill="#6366f1" />
-                    <!-- Neck -->
-                    <rect x="126" y="150" width="28" height="38" rx="6" fill="url(#skinGrad)" />
-                    <!-- Head & Ears -->
-                    <circle cx="106" cy="135" r="9" fill="url(#skinGrad)" />
-                    <circle cx="174" cy="135" r="9" fill="url(#skinGrad)" />
-                    <path d="M108 120 C108 85 172 85 172 120 C172 155 158 170 140 170 C122 170 108 155 108 120 Z"
-                      fill="url(#skinGrad)" />
-                    <!-- Hair -->
-                    <path
-                      d="M104 115 C102 80 120 62 140 62 C165 62 176 80 176 115 C168 95 150 90 140 90 C130 90 115 95 104 115 Z"
-                      fill="#0f172a" />
-                    <!-- Modern Eyeglasses -->
-                    <rect x="116" y="118" width="20" height="14" rx="4" fill="none" stroke="#6366f1"
-                      stroke-width="2.5" />
-                    <rect x="144" y="118" width="20" height="14" rx="4" fill="none" stroke="#6366f1"
-                      stroke-width="2.5" />
-                    <line x1="136" y1="124" x2="144" y2="124" stroke="#6366f1" stroke-width="2.5" />
-                    <!-- Friendly Smile -->
-                    <path d="M132 150 Q140 156 148 150" fill="none" stroke="#831843" stroke-width="2.2"
-                      stroke-linecap="round" />
-                    <!-- Laptop in Foreground -->
-                    <rect x="85" y="240" width="110" height="30" rx="6" fill="#334155" stroke="#475569"
-                      stroke-width="2" />
-                    <polygon points="120,248 160,248 155,258 125,258" fill="#6366f1" opacity="0.8" />
-                  </svg>
+                <!-- Authentic Developer Profile Photo -->
+                <div class="avatar-box profile-photo-frame">
+                  <img src="profile.jpg" alt="M. Venkata Sai - Artificial Intelligence & Data Science Student" class="profile-photo" id="profile-img">
+                  <div class="profile-ring-glow" aria-hidden="true"></div>
                 </div>
                 <div class="profile-badge-floating">
                   <span class="badge-icon">
@@ -335,14 +281,13 @@
 
         <div class="about-grid">
           <div class="about-card story-card glass-panel">
-            <div class="card-icon-bubble">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
+            <div class="about-profile-header">
+              <img src="profile.jpg" alt="M. Venkata Sai" class="about-profile-avatar">
+              <div class="about-profile-meta">
+                <h3 class="card-heading">Professional Profile</h3>
+                <span class="about-profile-sub">M. Venkata Sai | AI &amp; Data Science</span>
+              </div>
             </div>
-            <h3 class="card-heading">Professional Profile</h3>
             <p class="card-text">
               I am an aspiring software engineer currently pursuing my Bachelor of Technology (B.Tech) in
               <strong>Artificial Intelligence and Data Science</strong> at <strong>Ramachandra College of Engineering
@@ -1253,7 +1198,7 @@
         <div class="footer-social-links">
           <!-- 1. GitHub -->
           <a href="https://github.com/venkatasaimudde-cloud" target="_blank" rel="noopener noreferrer"
-            class="footer-social-btn" title="Visit GitHub Profile">
+            class="footer-social-btn github-pill" title="Visit GitHub Profile">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -1262,7 +1207,7 @@
           </a>
           <!-- 2. LinkedIn -->
           <a href="https://www.linkedin.com/in/venkata-sai-418494373/?isSelfProfile=true" target="_blank"
-            rel="noopener noreferrer" class="footer-social-btn" title="Connect on LinkedIn">
+            rel="noopener noreferrer" class="footer-social-btn linkedin-pill" title="Connect on LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -1270,7 +1215,7 @@
             <span>LinkedIn</span>
           </a>
           <!-- 3. Call -->
-          <a href="tel:7095431353" class="footer-social-btn" title="Call directly: 7095431353">
+          <a href="tel:7095431353" class="footer-social-btn call-pill" title="Call directly: 7095431353">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path
@@ -1280,7 +1225,7 @@
           </a>
           <!-- 4. LeetCode -->
           <a href="https://leetcode.com/u/Venkata_Sai_Mudde/" target="_blank" rel="noopener noreferrer"
-            class="footer-social-btn" title="Visit LeetCode Profile">
+            class="footer-social-btn leetcode-pill" title="Visit LeetCode Profile">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.705-1.072-2.799-1.132z" />
@@ -1289,7 +1234,7 @@
           </a>
           <!-- 5. WhatsApp -->
           <a href="https://wa.me/917095431353" target="_blank" rel="noopener noreferrer"
-            class="footer-social-btn" title="Chat on WhatsApp">
+            class="footer-social-btn whatsapp-pill" title="Chat on WhatsApp">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />

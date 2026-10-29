@@ -630,12 +630,6 @@ img, svg {
   box-shadow: 0 4px 14px var(--brand-glow);
 }
 
-.hero-social-link.whatsapp-pill:hover {
-  color: #25d366;
-  border-color: rgba(37, 211, 102, 0.4);
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
-}
-
 /* Hero Quick Stats */
 .hero-highlights {
   display: flex;
@@ -726,6 +720,67 @@ img, svg {
   border-radius: 50%;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.profile-photo-frame {
+  padding: 4px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary), var(--brand-accent));
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 50%;
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.profile-card:hover .profile-photo {
+  transform: scale(1.06);
+}
+
+.profile-ring-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.about-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-profile-avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 2.5px solid var(--brand-primary);
+  box-shadow: 0 4px 14px var(--brand-glow);
+  flex-shrink: 0;
+}
+
+.about-profile-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-profile-sub {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .avatar-svg {
@@ -2642,18 +2697,7 @@ a.contact-value:hover {
   box-shadow: 0 0 14px rgba(255, 161, 22, 0.4);
 }
 
-/* ===== Side-by-Side Channels: GitHub, LinkedIn, Call, LeetCode, WhatsApp ===== */
-.hero-social-link.call-pill:hover {
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
-}
-
-.hero-social-link.leetcode-pill:hover {
-  color: #ffa116;
-  border-color: rgba(255, 161, 22, 0.5);
-  box-shadow: 0 4px 14px rgba(255, 161, 22, 0.25);
-}
+/* ===== Side-by-Side Brand Channels: GitHub, LinkedIn, Call, LeetCode, WhatsApp ===== */
 
 .social-side-by-side {
   display: flex;
@@ -2686,33 +2730,200 @@ a.contact-value:hover {
   background: var(--bg-card-hover);
 }
 
-.social-connect-pill.github-pill:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+/* Distinct Brand Colors for Icons in Default State */
+.github-pill svg {
+  color: #f0f6fc;
+  fill: currentColor;
+  transition: all var(--transition-fast);
 }
 
-.social-connect-pill.linkedin-pill:hover {
+.linkedin-pill svg {
   color: #0a66c2;
-  border-color: #0a66c2;
-  box-shadow: 0 4px 14px rgba(10, 102, 194, 0.3);
+  fill: currentColor;
+  transition: all var(--transition-fast);
 }
 
-.social-connect-pill.call-pill:hover {
-  color: #3b82f6;
-  border-color: #3b82f6;
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+.call-pill svg {
+  color: #06b6d4;
+  stroke: #06b6d4;
+  transition: all var(--transition-fast);
 }
 
-.social-connect-pill.leetcode-pill:hover {
+.leetcode-pill svg {
   color: #ffa116;
-  border-color: #ffa116;
-  box-shadow: 0 4px 14px rgba(255, 161, 22, 0.3);
+  fill: currentColor;
+  transition: all var(--transition-fast);
 }
 
-.social-connect-pill.whatsapp-pill:hover {
+.whatsapp-pill svg {
   color: #25d366;
+  fill: currentColor;
+  transition: all var(--transition-fast);
+}
+
+/* 1. GITHUB */
+.hero-social-link.github-pill,
+.social-connect-pill.github-pill,
+.footer-social-btn.github-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #f0f6fc;
+}
+
+.hero-social-link.github-pill:hover,
+.social-connect-pill.github-pill:hover,
+.footer-social-btn.github-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 2. LINKEDIN */
+.hero-social-link.linkedin-pill,
+.social-connect-pill.linkedin-pill,
+.footer-social-btn.linkedin-pill {
+  background: rgba(10, 102, 194, 0.12);
+  border-color: rgba(10, 102, 194, 0.35);
+  color: #e0edff;
+}
+
+.hero-social-link.linkedin-pill:hover,
+.social-connect-pill.linkedin-pill:hover,
+.footer-social-btn.linkedin-pill:hover {
+  background: rgba(10, 102, 194, 0.24);
+  border-color: #0a66c2;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(10, 102, 194, 0.4);
+  transform: translateY(-2px);
+}
+
+.hero-social-link.linkedin-pill:hover svg,
+.social-connect-pill.linkedin-pill:hover svg,
+.footer-social-btn.linkedin-pill:hover svg {
+  color: #38bdf8;
+}
+
+/* 3. CALL */
+.hero-social-link.call-pill,
+.social-connect-pill.call-pill,
+.footer-social-btn.call-pill {
+  background: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.35);
+  color: #e0f7fa;
+}
+
+.hero-social-link.call-pill:hover,
+.social-connect-pill.call-pill:hover,
+.footer-social-btn.call-pill:hover {
+  background: rgba(6, 182, 212, 0.24);
+  border-color: #06b6d4;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.4);
+  transform: translateY(-2px);
+}
+
+.hero-social-link.call-pill:hover svg,
+.social-connect-pill.call-pill:hover svg,
+.footer-social-btn.call-pill:hover svg {
+  color: #22d3ee;
+  stroke: #22d3ee;
+}
+
+/* 4. LEETCODE */
+.hero-social-link.leetcode-pill,
+.social-connect-pill.leetcode-pill,
+.footer-social-btn.leetcode-pill {
+  background: rgba(255, 161, 22, 0.12);
+  border-color: rgba(255, 161, 22, 0.4);
+  color: #fff4e0;
+}
+
+.hero-social-link.leetcode-pill:hover,
+.social-connect-pill.leetcode-pill:hover,
+.footer-social-btn.leetcode-pill:hover {
+  background: rgba(255, 161, 22, 0.24);
+  border-color: #ffa116;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(255, 161, 22, 0.4);
+  transform: translateY(-2px);
+}
+
+.hero-social-link.leetcode-pill:hover svg,
+.social-connect-pill.leetcode-pill:hover svg,
+.footer-social-btn.leetcode-pill:hover svg {
+  color: #ffb84d;
+}
+
+/* 5. WHATSAPP */
+.hero-social-link.whatsapp-pill,
+.social-connect-pill.whatsapp-pill,
+.footer-social-btn.whatsapp-pill {
+  background: rgba(37, 211, 102, 0.12);
+  border-color: rgba(37, 211, 102, 0.35);
+  color: #e6fbed;
+}
+
+.hero-social-link.whatsapp-pill:hover,
+.social-connect-pill.whatsapp-pill:hover,
+.footer-social-btn.whatsapp-pill:hover {
+  background: rgba(37, 211, 102, 0.24);
   border-color: #25d366;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
+}
+
+.hero-social-link.whatsapp-pill:hover svg,
+.social-connect-pill.whatsapp-pill:hover svg,
+.footer-social-btn.whatsapp-pill:hover svg {
+  color: #4ade80;
+}
+
+/* Light Theme Support for Social Brand Pills */
+[data-theme="light"] .hero-social-link.github-pill,
+[data-theme="light"] .social-connect-pill.github-pill,
+[data-theme="light"] .footer-social-btn.github-pill {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.18);
+  color: #1e293b;
+}
+
+[data-theme="light"] .github-pill svg {
+  color: #1e293b;
+}
+
+[data-theme="light"] .hero-social-link.linkedin-pill,
+[data-theme="light"] .social-connect-pill.linkedin-pill,
+[data-theme="light"] .footer-social-btn.linkedin-pill {
+  background: rgba(10, 102, 194, 0.08);
+  border-color: rgba(10, 102, 194, 0.28);
+  color: #0a66c2;
+}
+
+[data-theme="light"] .hero-social-link.call-pill,
+[data-theme="light"] .social-connect-pill.call-pill,
+[data-theme="light"] .footer-social-btn.call-pill {
+  background: rgba(6, 182, 212, 0.08);
+  border-color: rgba(6, 182, 212, 0.28);
+  color: #0891b2;
+}
+
+[data-theme="light"] .hero-social-link.leetcode-pill,
+[data-theme="light"] .social-connect-pill.leetcode-pill,
+[data-theme="light"] .footer-social-btn.leetcode-pill {
+  background: rgba(255, 161, 22, 0.08);
+  border-color: rgba(255, 161, 22, 0.32);
+  color: #b45309;
+}
+
+[data-theme="light"] .hero-social-link.whatsapp-pill,
+[data-theme="light"] .social-connect-pill.whatsapp-pill,
+[data-theme="light"] .footer-social-btn.whatsapp-pill {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.28);
+  color: #15803d;
 }
 
 /* ==========================================================================
