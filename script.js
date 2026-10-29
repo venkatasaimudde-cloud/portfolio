@@ -7,15 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // ==========================================
-  // 0. CINEMATIC ENTRANCE ANIMATION
+  // 0. CINEMATIC ENTRANCE ANIMATION (4-second auto-dismiss, no skip)
   // ==========================================
-  const cinematicEl    = document.getElementById('cinematic-entrance');
-  const progressFill   = document.getElementById('cinematic-progress-fill');
-  const percentLabel   = document.getElementById('cinematic-percent');
-  const skipBtn        = document.getElementById('cinematic-skip-btn');
-  const canvas         = document.getElementById('cinematic-canvas');
+  const cinematicEl  = document.getElementById('cinematic-entrance');
+  const progressFill = document.getElementById('cinematic-progress-fill');
+  const percentLabel = document.getElementById('cinematic-percent');
+  const canvas       = document.getElementById('cinematic-canvas');
 
   if (cinematicEl && canvas) {
+    // Ensure body stays locked during animation
+    document.body.classList.add('cinematic-active');
+
     // --- A. Particle canvas setup ---
     const ctx = canvas.getContext('2d');
 
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCinematicCanvas();
     window.addEventListener('resize', resizeCinematicCanvas);
 
-    // Particles: some float slowly, some are fast neon streaks
+    // Particles: slow floaters + fast neon light streaks
     const particles = [];
     const PARTICLE_COUNT = 90;
 
@@ -51,9 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let rafId;
     function drawParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       for (const p of particles) {
-        // Draw tail for streak particles
         if (p.tail) {
           const grad = ctx.createLinearGradient(
             p.x - Math.cos(p.angle) * p.tailLen,
@@ -70,69 +70,71 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.globalAlpha = p.alpha * 0.5;
           ctx.stroke();
         }
-
-        // Draw particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.alpha;
         ctx.fill();
         ctx.globalAlpha = 1;
-
-        // Move
         p.x += p.vx;
         p.y += p.vy;
-
-        // Bounce gently at edges
         if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        // Twinkle
         p.alpha += (Math.random() - 0.5) * 0.04;
         p.alpha = Math.max(0.1, Math.min(0.95, p.alpha));
       }
-
       rafId = requestAnimationFrame(drawParticles);
     }
     drawParticles();
 
-    // --- B. Progress counter 0 → 100% over ~2.8s ---
-    let progress = 0;
-    const totalDuration = 2800; // ms
-    const interval      = 28;   // ms per tick
-    const steps         = totalDuration / interval;
-    const increment     = 100 / steps;
+    // --- B. Progress counter 0 → 100% over exactly 3.5 seconds ---
+    const TOTAL_MS  = 3500;
+    const TICK_MS   = 30;
+    const TOTAL_TICKS = TOTAL_MS / TICK_MS;
+    let progress    = 0;
+    let tickCount   = 0;
+    let dismissed   = false;
 
-    const counterInterval = setInterval(() => {
-      progress = Math.min(100, progress + increment + Math.random() * 0.8);
-      const pct = Math.round(progress);
+    const counterTimer = setInterval(() => {
+      tickCount++;
+      // Ease-in-out curve: slow start, fast middle, slow end
+      const t = tickCount / TOTAL_TICKS;
+      const eased = t < 0.5
+        ? 2 * t * t
+        : -1 + (4 - 2 * t) * t;
+      progress = Math.round(Math.min(100, eased * 100));
 
-      if (progressFill) progressFill.style.width = pct + '%';
-      if (percentLabel) percentLabel.textContent  = pct + '%';
+      if (progressFill) progressFill.style.width = progress + '%';
+      if (percentLabel) percentLabel.textContent  = progress + '%';
 
-      if (progress >= 100) {
-        clearInterval(counterInterval);
-        dismissCinematic();
+      if (tickCount >= TOTAL_TICKS && !dismissed) {
+        clearInterval(counterTimer);
+        // Ensure bar shows 100% visually before dismissing
+        if (progressFill) progressFill.style.width = '100%';
+        if (percentLabel) percentLabel.textContent  = '100%';
+        // Small pause at 100% so user can see it, then dismiss
+        setTimeout(dismissCinematic, 400);
       }
-    }, interval);
+    }, TICK_MS);
 
-    // --- C. Dismiss / transition to site ---
+    // --- C. Dismiss: fade out overlay, unlock page, remove from DOM ---
     function dismissCinematic() {
+      if (dismissed) return;
+      dismissed = true;
       cancelAnimationFrame(rafId);
-      cinematicEl.classList.add('exit');
+
+      // Unlock scrolling immediately
       document.body.classList.remove('cinematic-active');
 
-      setTimeout(() => {
-        cinematicEl.style.display = 'none';
-      }, 950);
-    }
+      // Trigger CSS exit transition
+      cinematicEl.classList.add('exit');
 
-    // Skip button
-    if (skipBtn) {
-      skipBtn.addEventListener('click', () => {
-        clearInterval(counterInterval);
-        dismissCinematic();
-      });
+      // After transition completes, fully remove the element
+      setTimeout(() => {
+        if (cinematicEl.parentNode) {
+          cinematicEl.parentNode.removeChild(cinematicEl);
+        }
+      }, 1000);
     }
   }
 
