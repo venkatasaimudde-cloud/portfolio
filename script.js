@@ -455,22 +455,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 8. CONTACT FORM VALIDATION & HANDLING
+  // 8. CONTACT FORM VALIDATION & REAL EMAIL DELIVERY
   // ==========================================
   const contactForm = document.getElementById('contact-form');
   const formFeedback = document.getElementById('form-feedback');
+  const submitBtn = document.getElementById('submit-btn');
+  const btnSendGmail = document.getElementById('btn-send-gmail');
+  const btnSendMailto = document.getElementById('btn-send-mailto');
+  const accessKeyInput = document.getElementById('access_key');
+  const web3formsSubject = document.getElementById('web3forms-subject');
+
+  const DESTINATION_EMAIL = 'venkatasaimudde@gmail.com';
 
   if (contactForm) {
     const nameInput = document.getElementById('contact-name');
     const emailInput = document.getElementById('contact-email');
+    const subjectInput = document.getElementById('contact-subject');
     const messageInput = document.getElementById('contact-message');
     const nameError = document.getElementById('name-error');
     const emailError = document.getElementById('email-error');
     const messageError = document.getElementById('message-error');
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
+    function validateInputs() {
       let isValid = true;
 
       // Clear previous error states
@@ -513,20 +519,148 @@ document.addEventListener('DOMContentLoaded', () => {
         isValid = false;
       }
 
-      if (isValid) {
-        // Show success state
-        formFeedback.textContent =
-          'Thank you, ' + nameInput.value.trim() + '! Your message has been prepared. You can also reach me directly at venkatasaimudde@gmail.com.';
-        formFeedback.classList.add('success');
-        formFeedback.style.display = 'block';
+      return isValid;
+    }
 
-        showToast('Message validated successfully!');
-        contactForm.reset();
+    function buildMailLinks() {
+      const name = nameInput.value.trim() || 'Portfolio Visitor';
+      const email = emailInput.value.trim() || '';
+      const customSub = subjectInput ? subjectInput.value.trim() : '';
+      const message = messageInput.value.trim() || '';
 
-        setTimeout(() => {
-          formFeedback.style.display = 'none';
-        }, 7000);
+      const finalSubject = customSub ? `[Portfolio] ${customSub}` : `[Portfolio Message] Inquiry from ${name}`;
+      const finalBody = `From: ${name}${email ? ' <' + email + '>' : ''}\nReply-To: ${email}\n\nMessage:\n${message}\n\n---\nSent via Venkata Sai's Portfolio Website`;
+
+      const encSubject = encodeURIComponent(finalSubject);
+      const encBody = encodeURIComponent(finalBody);
+
+      const mailtoUrl = `mailto:${DESTINATION_EMAIL}?subject=${encSubject}&body=${encBody}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${DESTINATION_EMAIL}&su=${encSubject}&body=${encBody}`;
+
+      return { name, email, subject: finalSubject, message, mailtoUrl, gmailUrl };
+    }
+
+    // Quick direct button: Gmail
+    if (btnSendGmail) {
+      btnSendGmail.addEventListener('click', () => {
+        const links = buildMailLinks();
+        window.open(links.gmailUrl, '_blank', 'noopener,noreferrer');
+        showToast('Opening Gmail composer...');
+      });
+    }
+
+    // Quick direct button: Email App
+    if (btnSendMailto) {
+      btnSendMailto.addEventListener('click', () => {
+        const links = buildMailLinks();
+        btnSendMailto.href = links.mailtoUrl;
+      });
+    }
+
+    // Main form submission
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!validateInputs()) {
+        return;
       }
+
+      const name = nameInput.value.trim();
+      const accessKey = accessKeyInput ? accessKeyInput.value.trim() : '';
+      const links = buildMailLinks();
+
+      // Check if user has configured a custom Web3Forms access key
+      const hasRealKey = accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE' && accessKey.length > 10;
+
+      // Update button to sending state
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Send Message';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> <span>Sending Message...</span>';
+      }
+
+      if (hasRealKey) {
+        if (web3formsSubject) {
+          web3formsSubject.value = links.subject;
+        }
+
+        try {
+          const formData = new FormData(contactForm);
+          formData.set('subject', links.subject);
+
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            formFeedback.className = 'form-feedback success';
+            formFeedback.innerHTML = `
+              <strong>Message Sent Successfully!</strong><br>
+              Thank you, ${name}. Your message has been delivered directly to Venkata Sai (<code>${DESTINATION_EMAIL}</code>). I will get back to you shortly.
+            `;
+            formFeedback.style.display = 'block';
+            showToast('Message sent successfully!');
+            contactForm.reset();
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalBtnHtml;
+            }
+            return;
+          } else {
+            console.warn('Web3Forms response was not success:', data);
+          }
+        } catch (err) {
+          console.error('Submission request failed, falling back to direct email:', err);
+        }
+      }
+
+      // DIRECT GUARANTEED DELIVERY DISPATCH:
+      // When access_key is not configured yet or if service fails, deliver via pre-filled email client
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+
+      formFeedback.className = 'form-feedback info';
+      formFeedback.innerHTML = `
+        <div class="prepared-email-banner">
+          <p>
+            <strong>Your message is ready to send!</strong><br>
+            Delivering to <code>${DESTINATION_EMAIL}</code>. Choose your email client below to send in 1 click:
+          </p>
+          <div class="feedback-actions">
+            <a href="${links.gmailUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:5px;vertical-align:middle;">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+              </svg>
+              Open in Gmail Web
+            </a>
+            <a href="${links.mailtoUrl}" class="btn btn-sm btn-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;vertical-align:middle;">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Open in Default Email App
+            </a>
+          </div>
+        </div>
+      `;
+      formFeedback.style.display = 'block';
+
+      // Automatically launch Gmail Web or Mail client so user doesn't even have to click
+      try {
+        const opened = window.open(links.gmailUrl, '_blank');
+        if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+          window.location.href = links.mailtoUrl;
+        }
+      } catch (e) {
+        window.location.href = links.mailtoUrl;
+      }
+
+      showToast('Opening email composer with pre-filled message...');
     });
   }
 
