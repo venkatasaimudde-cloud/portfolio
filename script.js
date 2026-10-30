@@ -16,17 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lock scroll
     document.body.style.overflow = 'hidden';
 
-    const fillEl   = document.getElementById('cinematic-progress-fill');
-    const pctEl    = document.getElementById('cinematic-percent');
-    const cvs      = document.getElementById('cinematic-canvas');
+    const fillEl = document.getElementById('cinematic-progress-fill');
+    const pctEl = document.getElementById('cinematic-percent');
+    const cvs = document.getElementById('cinematic-canvas');
 
     // ---- Particle canvas ----
     if (cvs) {
       const ctx = cvs.getContext('2d');
-      cvs.width  = window.innerWidth;
+      cvs.width = window.innerWidth;
       cvs.height = window.innerHeight;
       window.addEventListener('resize', () => {
-        cvs.width  = window.innerWidth;
+        cvs.width = window.innerWidth;
         cvs.height = window.innerHeight;
       });
 
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         pts.push({
           x: Math.random() * cvs.width, y: Math.random() * cvs.height,
           r: streak ? 0.8 : Math.random() * 2 + 0.4,
-          vx: streak ? (Math.random()-0.5)*5 : (Math.random()-0.5)*0.4,
-          vy: streak ? (Math.random()-0.5)*5 : (Math.random()-0.5)*0.4,
-          a: Math.random()*0.5+0.3,
-          c: ['#00f0ff','#8b5cf6','#d946ef','#ffffff'][Math.floor(Math.random()*4)],
-          streak, tl: streak ? Math.random()*45+20 : 0,
-          ang: Math.atan2(Math.random()-0.5, Math.random()-0.5)
+          vx: streak ? (Math.random() - 0.5) * 5 : (Math.random() - 0.5) * 0.4,
+          vy: streak ? (Math.random() - 0.5) * 5 : (Math.random() - 0.5) * 0.4,
+          a: Math.random() * 0.5 + 0.3,
+          c: ['#00f0ff', '#8b5cf6', '#d946ef', '#ffffff'][Math.floor(Math.random() * 4)],
+          streak, tl: streak ? Math.random() * 45 + 20 : 0,
+          ang: Math.atan2(Math.random() - 0.5, Math.random() - 0.5)
         });
       }
 
@@ -51,21 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const p of pts) {
           if (p.streak) {
             const g = ctx.createLinearGradient(
-              p.x - Math.cos(p.ang)*p.tl, p.y - Math.sin(p.ang)*p.tl, p.x, p.y);
+              p.x - Math.cos(p.ang) * p.tl, p.y - Math.sin(p.ang) * p.tl, p.x, p.y);
             g.addColorStop(0, 'transparent'); g.addColorStop(1, p.c);
             ctx.beginPath();
-            ctx.moveTo(p.x - Math.cos(p.ang)*p.tl, p.y - Math.sin(p.ang)*p.tl);
+            ctx.moveTo(p.x - Math.cos(p.ang) * p.tl, p.y - Math.sin(p.ang) * p.tl);
             ctx.lineTo(p.x, p.y);
             ctx.strokeStyle = g; ctx.lineWidth = p.r;
             ctx.globalAlpha = p.a * 0.5; ctx.stroke();
           }
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
           ctx.fillStyle = p.c; ctx.globalAlpha = p.a; ctx.fill();
           ctx.globalAlpha = 1;
           p.x += p.vx; p.y += p.vy;
-          if (p.x < 0 || p.x > cvs.width)  p.vx *= -1;
+          if (p.x < 0 || p.x > cvs.width) p.vx *= -1;
           if (p.y < 0 || p.y > cvs.height) p.vy *= -1;
-          p.a = Math.max(0.1, Math.min(0.9, p.a + (Math.random()-0.5)*0.04));
+          p.a = Math.max(0.1, Math.min(0.9, p.a + (Math.random() - 0.5) * 0.04));
         }
         raf = requestAnimationFrame(draw);
       }
@@ -75,20 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
       window._stopCinematicCanvas = () => cancelAnimationFrame(raf);
     }
 
-    // ---- Progress bar counter over 3600ms ----
+    // ---- Progress bar counter (2200ms matching video model) ----
     const START = Date.now();
-    const DURATION = 3600;
+    const DURATION = 2200;
+    let dismissed = false;
+
     const tick = setInterval(() => {
       const elapsed = Date.now() - START;
       const t = Math.min(1, elapsed / DURATION);
       const pct = Math.round(t * 100);
       if (fillEl) fillEl.style.width = pct + '%';
-      if (pctEl)  pctEl.textContent  = pct + '%';
-      if (t >= 1) clearInterval(tick);
-    }, 30);
+      if (pctEl) pctEl.textContent = pct + '%';
+      if (t >= 1) {
+        clearInterval(tick);
+        setTimeout(dismiss, 250);
+      }
+    }, 25);
 
-    // ---- GUARANTEED dismiss after 4 seconds ----
+    // ---- GUARANTEED dismiss after completion ----
     function dismiss() {
+      if (dismissed) return;
+      dismissed = true;
       clearInterval(tick);
       if (window._stopCinematicCanvas) window._stopCinematicCanvas();
 
@@ -98,15 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 2. Force 100% on bar
       if (fillEl) fillEl.style.width = '100%';
-      if (pctEl)  pctEl.textContent  = '100%';
+      if (pctEl) pctEl.textContent = '100%';
 
       // 3. Immediately block all interaction with overlay
       overlay.style.pointerEvents = 'none';
 
       // 4. Fade out smoothly
-      overlay.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      overlay.style.opacity    = '0';
-      overlay.style.transform  = 'scale(1.05)';
+      overlay.style.transition = 'opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+      overlay.style.opacity = '0';
+      overlay.style.transform = 'scale(1.04)';
 
       // 5. Remove from DOM completely after fade
       setTimeout(() => {
@@ -114,11 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.visibility = 'hidden';
         overlay.style.zIndex = '-1';
         if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-      }, 850);
+      }, 750);
     }
 
-    // Hard guarantee: always dismiss at 4s no matter what
-    setTimeout(dismiss, 4000);
+    // Hard guarantee: always dismiss at 2.8s max
+    setTimeout(dismiss, 2800);
   })();
 
 
@@ -171,12 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. TYPEWRITER EFFECT
   // ==========================================
   const typewriterElement = document.getElementById('typewriter-text');
+  const typewriterPrefixElement = document.querySelector('.typewriter-prefix');
   const roles = [
     'Artificial Intelligence and Data Science Student',
-    'B.Tech AI & Data Science Student @ RCEE',
-    'Problem Solver & Builder',
-    'Python & NLP Developer',
-    'Technical Leader & Collaborator'
+    'B.Tech AI & Data Science Student @ RCEE'
   ];
 
   let roleIndex = 0;
@@ -188,6 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!typewriterElement) return;
 
     const currentRole = roles[roleIndex];
+
+    // Dynamically adjust prefix ("I am an" for vowels like Artificial, "I am a" for consonants like B.Tech)
+    if (typewriterPrefixElement && !isDeleting && charIndex === 0) {
+      const startsWithVowel = /^[AEIOUaeiou]/.test(currentRole);
+      typewriterPrefixElement.textContent = startsWithVowel ? 'I am an' : 'I am a';
+    }
 
     if (isDeleting) {
       typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
@@ -452,6 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const projectDetails = {
     mandimitra: {
+      image: 'mandimitra.jpg',
       tag: 'Full-Stack Agri-Tech Application',
       title: 'Mandi Mitra - Digital Agricultural Marketplace',
       overview:
@@ -466,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
       techStack: ['React 19', 'TypeScript', 'Express.js', 'Vite', 'Tailwind CSS', 'jsPDF', 'JWT']
     },
     prakalp: {
+      image: 'prakalp.png',
       tag: 'Natural Language Processing & Python Web Tool',
       title: 'Prakalp - Academic Text Simplifier',
       overview:
@@ -502,6 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!data) return;
 
       modalContent.innerHTML = `
+        ${data.image ? `<div class="modal-banner-wrap"><img src="${data.image}" alt="${data.title}" class="modal-banner-img"></div>` : ''}
         <span class="modal-header-tag">${data.tag}</span>
         <h2 id="modal-title" class="modal-header-title">${data.title}</h2>
         
